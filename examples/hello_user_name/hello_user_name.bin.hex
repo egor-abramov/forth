@@ -1,0 +1,122 @@
+<label>                   | <address>  | <HEXCODE>  | <mnemonic>
+                          | 2988       | 0x06       | ADDI SP, SP, -4
+                          | 2992       | 0x01       | SW T1, 0(SP)
+                          | 2996       | 0x04       | MV T1, T0
+                          | 3000       | 0x06       | ADDI T0, ZERO, 32
+                          | 3004       | 0x04       | MV T0, T1
+                          | 3008       | 0x00       | LW T1, 0(SP)
+                          | 3012       | 0x06       | ADDI SP, SP, 4
+                          | 3016       | 0x06       | ADDI SP, SP, -4
+                          | 3020       | 0x01       | SW T1, 0(SP)
+                          | 3024       | 0x04       | MV T1, T0
+                          | 3028       | 0x02       | LUI T0, %hi(STRING_QUESTION_MSG)
+                          | 3032       | 0x06       | ADDI T0, T0, %lo(STRING_QUESTION_MSG)
+                          | 3036       | 0x02       | LUI T2, %hi(_RET_3056)
+                          | 3040       | 0x06       | ADDI T2, T2, %lo(_RET_3056)
+                          | 3044       | 0x06       | ADDI RP, RP, -4
+                          | 3048       | 0x01       | SW T2, 0(RP)
+                          | 3052       | 0x0B       | J PRINT_STR
+                          | 3056       | 0x06       | ADDI SP, SP, -4
+                          | 3060       | 0x01       | SW T1, 0(SP)
+                          | 3064       | 0x04       | MV T1, T0
+                          | 3068       | 0x02       | LUI T0, %hi(ARRAY_USER_NAME_BUF)
+                          | 3072       | 0x06       | ADDI T0, T0, %lo(ARRAY_USER_NAME_BUF)
+                          | 3076       | 0x02       | LUI T2, %hi(_RET_3096)
+                          | 3080       | 0x06       | ADDI T2, T2, %lo(_RET_3096)
+                          | 3084       | 0x06       | ADDI RP, RP, -4
+                          | 3088       | 0x01       | SW T2, 0(RP)
+                          | 3092       | 0x0B       | J READ_STR
+                          | 3096       | 0x06       | ADDI SP, SP, -4
+                          | 3100       | 0x01       | SW T1, 0(SP)
+                          | 3104       | 0x04       | MV T1, T0
+                          | 3108       | 0x02       | LUI T0, %hi(STRING_HELLO_MSG)
+                          | 3112       | 0x06       | ADDI T0, T0, %lo(STRING_HELLO_MSG)
+                          | 3116       | 0x02       | LUI T2, %hi(_RET_3136)
+                          | 3120       | 0x06       | ADDI T2, T2, %lo(_RET_3136)
+                          | 3124       | 0x06       | ADDI RP, RP, -4
+                          | 3128       | 0x01       | SW T2, 0(RP)
+                          | 3132       | 0x0B       | J PRINT_STR
+                          | 3136       | 0x06       | ADDI SP, SP, -4
+                          | 3140       | 0x01       | SW T1, 0(SP)
+                          | 3144       | 0x04       | MV T1, T0
+                          | 3148       | 0x02       | LUI T0, %hi(ARRAY_USER_NAME_BUF)
+                          | 3152       | 0x06       | ADDI T0, T0, %lo(ARRAY_USER_NAME_BUF)
+                          | 3156       | 0x02       | LUI T2, %hi(_RET_3176)
+                          | 3160       | 0x06       | ADDI T2, T2, %lo(_RET_3176)
+                          | 3164       | 0x06       | ADDI RP, RP, -4
+                          | 3168       | 0x01       | SW T2, 0(RP)
+                          | 3172       | 0x0B       | J PRINT_STR
+                          | 3176       | 0x06       | ADDI SP, SP, -4
+                          | 3180       | 0x01       | SW T1, 0(SP)
+                          | 3184       | 0x04       | MV T1, T0
+                          | 3188       | 0x02       | LUI T0, %hi(STRING_EXCL_MSG)
+                          | 3192       | 0x06       | ADDI T0, T0, %lo(STRING_EXCL_MSG)
+                          | 3196       | 0x02       | LUI T2, %hi(_RET_3216)
+                          | 3200       | 0x06       | ADDI T2, T2, %lo(_RET_3216)
+                          | 3204       | 0x06       | ADDI RP, RP, -4
+                          | 3208       | 0x01       | SW T2, 0(RP)
+                          | 3212       | 0x0B       | J PRINT_STR
+                          | 3216       | 0x0D       | HALT
+STRING_QUESTION_MSG       | 3276       | 0x00000013 | DATA
+                          | 3280       | 0x00000057 | DATA
+                          | 3284       | 0x00000068 | DATA
+                          | 3288       | 0x00000061 | DATA
+                          | 3292       | 0x00000074 | DATA
+                          | 3296       | 0x00000020 | DATA
+                          | 3300       | 0x00000069 | DATA
+                          | 3304       | 0x00000073 | DATA
+                          | 3308       | 0x00000020 | DATA
+                          | 3312       | 0x00000079 | DATA
+                          | 3316       | 0x0000006F | DATA
+                          | 3320       | 0x00000075 | DATA
+                          | 3324       | 0x00000072 | DATA
+                          | 3328       | 0x00000020 | DATA
+                          | 3332       | 0x0000006E | DATA
+                          | 3336       | 0x00000061 | DATA
+                          | 3340       | 0x0000006D | DATA
+                          | 3344       | 0x00000065 | DATA
+                          | 3348       | 0x0000003F | DATA
+                          | 3352       | 0x0000000A | DATA
+STRING_HELLO_MSG          | 3356       | 0x00000007 | DATA
+                          | 3360       | 0x00000048 | DATA
+                          | 3364       | 0x00000065 | DATA
+                          | 3368       | 0x0000006C | DATA
+                          | 3372       | 0x0000006C | DATA
+                          | 3376       | 0x0000006F | DATA
+                          | 3380       | 0x0000002C | DATA
+                          | 3384       | 0x00000020 | DATA
+STRING_EXCL_MSG           | 3388       | 0x00000002 | DATA
+                          | 3392       | 0x00000021 | DATA
+                          | 3396       | 0x0000000A | DATA
+ARRAY_USER_NAME_BUF       | 3400       | 0x00000000 | DATA
+                          | 3404       | 0x00000000 | DATA
+                          | 3408       | 0x00000000 | DATA
+                          | 3412       | 0x00000000 | DATA
+                          | 3416       | 0x00000000 | DATA
+                          | 3420       | 0x00000000 | DATA
+                          | 3424       | 0x00000000 | DATA
+                          | 3428       | 0x00000000 | DATA
+                          | 3432       | 0x00000000 | DATA
+                          | 3436       | 0x00000000 | DATA
+                          | 3440       | 0x00000000 | DATA
+                          | 3444       | 0x00000000 | DATA
+                          | 3448       | 0x00000000 | DATA
+                          | 3452       | 0x00000000 | DATA
+                          | 3456       | 0x00000000 | DATA
+                          | 3460       | 0x00000000 | DATA
+                          | 3464       | 0x00000000 | DATA
+                          | 3468       | 0x00000000 | DATA
+                          | 3472       | 0x00000000 | DATA
+                          | 3476       | 0x00000000 | DATA
+                          | 3480       | 0x00000000 | DATA
+                          | 3484       | 0x00000000 | DATA
+                          | 3488       | 0x00000000 | DATA
+                          | 3492       | 0x00000000 | DATA
+                          | 3496       | 0x00000000 | DATA
+                          | 3500       | 0x00000000 | DATA
+                          | 3504       | 0x00000000 | DATA
+                          | 3508       | 0x00000000 | DATA
+                          | 3512       | 0x00000000 | DATA
+                          | 3516       | 0x00000000 | DATA
+                          | 3520       | 0x00000000 | DATA
+                          | 3524       | 0x00000000 | DATA

@@ -1,0 +1,4 @@
+.idea
+examples/*/*.bin
+examples/*/*.txt
+*.sh

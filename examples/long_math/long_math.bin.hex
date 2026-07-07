@@ -1,0 +1,696 @@
+<label>                   | <address>  | <HEXCODE>  | <mnemonic>
+                          | 3040       | 0x0B       | J _SKIP_FUNC_ADD64
+ADD64                     | 3044       | 0x06       | ADDI SP, SP, -4
+                          | 3048       | 0x01       | SW T1, 0(SP)
+                          | 3052       | 0x04       | MV T1, T0
+                          | 3056       | 0x02       | LUI T0, %hi(VAR_AL)
+                          | 3060       | 0x06       | ADDI T0, T0, %lo(VAR_AL)
+                          | 3064       | 0x00       | LW T0, 0(T0)
+                          | 3068       | 0x06       | ADDI SP, SP, -4
+                          | 3072       | 0x01       | SW T1, 0(SP)
+                          | 3076       | 0x04       | MV T1, T0
+                          | 3080       | 0x02       | LUI T0, %hi(VAR_BL)
+                          | 3084       | 0x06       | ADDI T0, T0, %lo(VAR_BL)
+                          | 3088       | 0x00       | LW T0, 0(T0)
+                          | 3092       | 0x07       | ADD T0, T1, T0
+                          | 3096       | 0x00       | LW T1, 0(SP)
+                          | 3100       | 0x06       | ADDI SP, SP, 4
+                          | 3104       | 0x02       | LUI T2, %hi(VAR_RL)
+                          | 3108       | 0x06       | ADDI T2, T2, %lo(VAR_RL)
+                          | 3112       | 0x01       | SW T0, 0(T2)
+                          | 3116       | 0x04       | MV T0, T1
+                          | 3120       | 0x00       | LW T1, 0(SP)
+                          | 3124       | 0x06       | ADDI SP, SP, 4
+                          | 3128       | 0x06       | ADDI SP, SP, -4
+                          | 3132       | 0x01       | SW T1, 0(SP)
+                          | 3136       | 0x04       | MV T1, T0
+                          | 3140       | 0x02       | LUI T0, %hi(VAR_AL)
+                          | 3144       | 0x06       | ADDI T0, T0, %lo(VAR_AL)
+                          | 3148       | 0x00       | LW T0, 0(T0)
+                          | 3152       | 0x06       | ADDI SP, SP, -4
+                          | 3156       | 0x01       | SW T1, 0(SP)
+                          | 3160       | 0x04       | MV T1, T0
+                          | 3164       | 0x02       | LUI T0, 524288
+                          | 3168       | 0x06       | ADDI T0, T0, 4095
+                          | 3172       | 0x05       | INV T0, T0
+                          | 3176       | 0x0A       | AND T0, T1, T0
+                          | 3180       | 0x00       | LW T1, 0(SP)
+                          | 3184       | 0x06       | ADDI SP, SP, 4
+                          | 3188       | 0x02       | LUI T2, %hi(VAR_A31)
+                          | 3192       | 0x06       | ADDI T2, T2, %lo(VAR_A31)
+                          | 3196       | 0x01       | SW T0, 0(T2)
+                          | 3200       | 0x04       | MV T0, T1
+                          | 3204       | 0x00       | LW T1, 0(SP)
+                          | 3208       | 0x06       | ADDI SP, SP, 4
+                          | 3212       | 0x06       | ADDI SP, SP, -4
+                          | 3216       | 0x01       | SW T1, 0(SP)
+                          | 3220       | 0x04       | MV T1, T0
+                          | 3224       | 0x02       | LUI T0, %hi(VAR_BL)
+                          | 3228       | 0x06       | ADDI T0, T0, %lo(VAR_BL)
+                          | 3232       | 0x00       | LW T0, 0(T0)
+                          | 3236       | 0x06       | ADDI SP, SP, -4
+                          | 3240       | 0x01       | SW T1, 0(SP)
+                          | 3244       | 0x04       | MV T1, T0
+                          | 3248       | 0x02       | LUI T0, 524288
+                          | 3252       | 0x06       | ADDI T0, T0, 4095
+                          | 3256       | 0x05       | INV T0, T0
+                          | 3260       | 0x0A       | AND T0, T1, T0
+                          | 3264       | 0x00       | LW T1, 0(SP)
+                          | 3268       | 0x06       | ADDI SP, SP, 4
+                          | 3272       | 0x02       | LUI T2, %hi(VAR_B31)
+                          | 3276       | 0x06       | ADDI T2, T2, %lo(VAR_B31)
+                          | 3280       | 0x01       | SW T0, 0(T2)
+                          | 3284       | 0x04       | MV T0, T1
+                          | 3288       | 0x00       | LW T1, 0(SP)
+                          | 3292       | 0x06       | ADDI SP, SP, 4
+                          | 3296       | 0x06       | ADDI SP, SP, -4
+                          | 3300       | 0x01       | SW T1, 0(SP)
+                          | 3304       | 0x04       | MV T1, T0
+                          | 3308       | 0x02       | LUI T0, %hi(VAR_RL)
+                          | 3312       | 0x06       | ADDI T0, T0, %lo(VAR_RL)
+                          | 3316       | 0x00       | LW T0, 0(T0)
+                          | 3320       | 0x06       | ADDI SP, SP, -4
+                          | 3324       | 0x01       | SW T1, 0(SP)
+                          | 3328       | 0x04       | MV T1, T0
+                          | 3332       | 0x02       | LUI T0, 524288
+                          | 3336       | 0x06       | ADDI T0, T0, 4095
+                          | 3340       | 0x05       | INV T0, T0
+                          | 3344       | 0x0A       | AND T0, T1, T0
+                          | 3348       | 0x00       | LW T1, 0(SP)
+                          | 3352       | 0x06       | ADDI SP, SP, 4
+                          | 3356       | 0x02       | LUI T2, %hi(VAR_R31)
+                          | 3360       | 0x06       | ADDI T2, T2, %lo(VAR_R31)
+                          | 3364       | 0x01       | SW T0, 0(T2)
+                          | 3368       | 0x04       | MV T0, T1
+                          | 3372       | 0x00       | LW T1, 0(SP)
+                          | 3376       | 0x06       | ADDI SP, SP, 4
+                          | 3380       | 0x06       | ADDI SP, SP, -4
+                          | 3384       | 0x01       | SW T1, 0(SP)
+                          | 3388       | 0x04       | MV T1, T0
+                          | 3392       | 0x02       | LUI T0, %hi(VAR_A31)
+                          | 3396       | 0x06       | ADDI T0, T0, %lo(VAR_A31)
+                          | 3400       | 0x00       | LW T0, 0(T0)
+                          | 3404       | 0x06       | ADDI SP, SP, -4
+                          | 3408       | 0x01       | SW T1, 0(SP)
+                          | 3412       | 0x04       | MV T1, T0
+                          | 3416       | 0x02       | LUI T0, %hi(VAR_B31)
+                          | 3420       | 0x06       | ADDI T0, T0, %lo(VAR_B31)
+                          | 3424       | 0x00       | LW T0, 0(T0)
+                          | 3428       | 0x0A       | AND T0, T1, T0
+                          | 3432       | 0x00       | LW T1, 0(SP)
+                          | 3436       | 0x06       | ADDI SP, SP, 4
+                          | 3440       | 0x06       | ADDI SP, SP, -4
+                          | 3444       | 0x01       | SW T1, 0(SP)
+                          | 3448       | 0x04       | MV T1, T0
+                          | 3452       | 0x02       | LUI T0, %hi(VAR_A31)
+                          | 3456       | 0x06       | ADDI T0, T0, %lo(VAR_A31)
+                          | 3460       | 0x00       | LW T0, 0(T0)
+                          | 3464       | 0x06       | ADDI SP, SP, -4
+                          | 3468       | 0x01       | SW T1, 0(SP)
+                          | 3472       | 0x04       | MV T1, T0
+                          | 3476       | 0x02       | LUI T0, %hi(VAR_B31)
+                          | 3480       | 0x06       | ADDI T0, T0, %lo(VAR_B31)
+                          | 3484       | 0x00       | LW T0, 0(T0)
+                          | 3488       | 0x02       | LUI T2, %hi(_RET_3508)
+                          | 3492       | 0x06       | ADDI T2, T2, %lo(_RET_3508)
+                          | 3496       | 0x06       | ADDI RP, RP, -4
+                          | 3500       | 0x01       | SW T2, 0(RP)
+                          | 3504       | 0x0B       | J OR
+                          | 3508       | 0x06       | ADDI SP, SP, -4
+                          | 3512       | 0x01       | SW T1, 0(SP)
+                          | 3516       | 0x04       | MV T1, T0
+                          | 3520       | 0x02       | LUI T0, %hi(VAR_R31)
+                          | 3524       | 0x06       | ADDI T0, T0, %lo(VAR_R31)
+                          | 3528       | 0x00       | LW T0, 0(T0)
+                          | 3532       | 0x05       | INV T0, T0
+                          | 3536       | 0x0A       | AND T0, T1, T0
+                          | 3540       | 0x00       | LW T1, 0(SP)
+                          | 3544       | 0x06       | ADDI SP, SP, 4
+                          | 3548       | 0x02       | LUI T2, %hi(_RET_3568)
+                          | 3552       | 0x06       | ADDI T2, T2, %lo(_RET_3568)
+                          | 3556       | 0x06       | ADDI RP, RP, -4
+                          | 3560       | 0x01       | SW T2, 0(RP)
+                          | 3564       | 0x0B       | J OR
+                          | 3568       | 0x06       | ADDI SP, SP, -4
+                          | 3572       | 0x01       | SW T1, 0(SP)
+                          | 3576       | 0x04       | MV T1, T0
+                          | 3580       | 0x06       | ADDI T0, ZERO, 0
+                          | 3584       | 0x02       | LUI T2, %hi(VAR_CARRY_FLAG)
+                          | 3588       | 0x06       | ADDI T2, T2, %lo(VAR_CARRY_FLAG)
+                          | 3592       | 0x01       | SW T0, 0(T2)
+                          | 3596       | 0x04       | MV T0, T1
+                          | 3600       | 0x00       | LW T1, 0(SP)
+                          | 3604       | 0x06       | ADDI SP, SP, 4
+                          | 3608       | 0x05       | INV T0, T0
+                          | 3612       | 0x04       | MV T2, T0
+                          | 3616       | 0x06       | ADDI T0, ZERO, 0
+                          | 3620       | 0x10       | JG T2, IS_TRUE_3612
+                          | 3624       | 0x0B       | J IS_FALSE_3612
+IS_TRUE_3612              | 3628       | 0x06       | ADDI T0, ZERO, 1
+IS_FALSE_3612             | 3632       | 0x04       | MV T2, T0
+                          | 3636       | 0x04       | MV T0, T1
+                          | 3640       | 0x00       | LW T1, 0(SP)
+                          | 3644       | 0x06       | ADDI SP, SP, 4
+                          | 3648       | 0x03       | JZ T2, IF_FALSE_3632
+                          | 3652       | 0x06       | ADDI SP, SP, -4
+                          | 3656       | 0x01       | SW T1, 0(SP)
+                          | 3660       | 0x04       | MV T1, T0
+                          | 3664       | 0x06       | ADDI T0, ZERO, 1
+                          | 3668       | 0x02       | LUI T2, %hi(VAR_CARRY_FLAG)
+                          | 3672       | 0x06       | ADDI T2, T2, %lo(VAR_CARRY_FLAG)
+                          | 3676       | 0x01       | SW T0, 0(T2)
+                          | 3680       | 0x04       | MV T0, T1
+                          | 3684       | 0x00       | LW T1, 0(SP)
+                          | 3688       | 0x06       | ADDI SP, SP, 4
+IF_FALSE_3632             | 3692       | 0x06       | ADDI SP, SP, -4
+                          | 3696       | 0x01       | SW T1, 0(SP)
+                          | 3700       | 0x04       | MV T1, T0
+                          | 3704       | 0x02       | LUI T0, %hi(VAR_AH)
+                          | 3708       | 0x06       | ADDI T0, T0, %lo(VAR_AH)
+                          | 3712       | 0x00       | LW T0, 0(T0)
+                          | 3716       | 0x06       | ADDI SP, SP, -4
+                          | 3720       | 0x01       | SW T1, 0(SP)
+                          | 3724       | 0x04       | MV T1, T0
+                          | 3728       | 0x02       | LUI T0, %hi(VAR_BH)
+                          | 3732       | 0x06       | ADDI T0, T0, %lo(VAR_BH)
+                          | 3736       | 0x00       | LW T0, 0(T0)
+                          | 3740       | 0x07       | ADD T0, T1, T0
+                          | 3744       | 0x00       | LW T1, 0(SP)
+                          | 3748       | 0x06       | ADDI SP, SP, 4
+                          | 3752       | 0x06       | ADDI SP, SP, -4
+                          | 3756       | 0x01       | SW T1, 0(SP)
+                          | 3760       | 0x04       | MV T1, T0
+                          | 3764       | 0x02       | LUI T0, %hi(VAR_CARRY_FLAG)
+                          | 3768       | 0x06       | ADDI T0, T0, %lo(VAR_CARRY_FLAG)
+                          | 3772       | 0x00       | LW T0, 0(T0)
+                          | 3776       | 0x07       | ADD T0, T1, T0
+                          | 3780       | 0x00       | LW T1, 0(SP)
+                          | 3784       | 0x06       | ADDI SP, SP, 4
+                          | 3788       | 0x02       | LUI T2, %hi(VAR_RH)
+                          | 3792       | 0x06       | ADDI T2, T2, %lo(VAR_RH)
+                          | 3796       | 0x01       | SW T0, 0(T2)
+                          | 3800       | 0x04       | MV T0, T1
+                          | 3804       | 0x00       | LW T1, 0(SP)
+                          | 3808       | 0x06       | ADDI SP, SP, 4
+                          | 3812       | 0x00       | LW T2, 0(RP)
+                          | 3816       | 0x06       | ADDI RP, RP, 4
+                          | 3820       | 0x0C       | JR T2
+                          | 3824       | 0x0B       | J _SKIP_FUNC_SUB64
+SUB64                     | 3828       | 0x06       | ADDI SP, SP, -4
+                          | 3832       | 0x01       | SW T1, 0(SP)
+                          | 3836       | 0x04       | MV T1, T0
+                          | 3840       | 0x02       | LUI T0, %hi(VAR_BL)
+                          | 3844       | 0x06       | ADDI T0, T0, %lo(VAR_BL)
+                          | 3848       | 0x00       | LW T0, 0(T0)
+                          | 3852       | 0x05       | INV T0, T0
+                          | 3856       | 0x02       | LUI T2, %hi(VAR_BL)
+                          | 3860       | 0x06       | ADDI T2, T2, %lo(VAR_BL)
+                          | 3864       | 0x01       | SW T0, 0(T2)
+                          | 3868       | 0x04       | MV T0, T1
+                          | 3872       | 0x00       | LW T1, 0(SP)
+                          | 3876       | 0x06       | ADDI SP, SP, 4
+                          | 3880       | 0x06       | ADDI SP, SP, -4
+                          | 3884       | 0x01       | SW T1, 0(SP)
+                          | 3888       | 0x04       | MV T1, T0
+                          | 3892       | 0x02       | LUI T0, %hi(VAR_BH)
+                          | 3896       | 0x06       | ADDI T0, T0, %lo(VAR_BH)
+                          | 3900       | 0x00       | LW T0, 0(T0)
+                          | 3904       | 0x05       | INV T0, T0
+                          | 3908       | 0x02       | LUI T2, %hi(VAR_BH)
+                          | 3912       | 0x06       | ADDI T2, T2, %lo(VAR_BH)
+                          | 3916       | 0x01       | SW T0, 0(T2)
+                          | 3920       | 0x04       | MV T0, T1
+                          | 3924       | 0x00       | LW T1, 0(SP)
+                          | 3928       | 0x06       | ADDI SP, SP, 4
+                          | 3932       | 0x02       | LUI T2, %hi(_RET_3952)
+                          | 3936       | 0x06       | ADDI T2, T2, %lo(_RET_3952)
+                          | 3940       | 0x06       | ADDI RP, RP, -4
+                          | 3944       | 0x01       | SW T2, 0(RP)
+                          | 3948       | 0x0B       | J ADD64
+                          | 3952       | 0x06       | ADDI SP, SP, -4
+                          | 3956       | 0x01       | SW T1, 0(SP)
+                          | 3960       | 0x04       | MV T1, T0
+                          | 3964       | 0x02       | LUI T0, %hi(VAR_RL)
+                          | 3968       | 0x06       | ADDI T0, T0, %lo(VAR_RL)
+                          | 3972       | 0x00       | LW T0, 0(T0)
+                          | 3976       | 0x02       | LUI T2, %hi(VAR_AL)
+                          | 3980       | 0x06       | ADDI T2, T2, %lo(VAR_AL)
+                          | 3984       | 0x01       | SW T0, 0(T2)
+                          | 3988       | 0x04       | MV T0, T1
+                          | 3992       | 0x00       | LW T1, 0(SP)
+                          | 3996       | 0x06       | ADDI SP, SP, 4
+                          | 4000       | 0x06       | ADDI SP, SP, -4
+                          | 4004       | 0x01       | SW T1, 0(SP)
+                          | 4008       | 0x04       | MV T1, T0
+                          | 4012       | 0x02       | LUI T0, %hi(VAR_RH)
+                          | 4016       | 0x06       | ADDI T0, T0, %lo(VAR_RH)
+                          | 4020       | 0x00       | LW T0, 0(T0)
+                          | 4024       | 0x02       | LUI T2, %hi(VAR_AH)
+                          | 4028       | 0x06       | ADDI T2, T2, %lo(VAR_AH)
+                          | 4032       | 0x01       | SW T0, 0(T2)
+                          | 4036       | 0x04       | MV T0, T1
+                          | 4040       | 0x00       | LW T1, 0(SP)
+                          | 4044       | 0x06       | ADDI SP, SP, 4
+                          | 4048       | 0x06       | ADDI SP, SP, -4
+                          | 4052       | 0x01       | SW T1, 0(SP)
+                          | 4056       | 0x04       | MV T1, T0
+                          | 4060       | 0x06       | ADDI T0, ZERO, 1
+                          | 4064       | 0x02       | LUI T2, %hi(VAR_BL)
+                          | 4068       | 0x06       | ADDI T2, T2, %lo(VAR_BL)
+                          | 4072       | 0x01       | SW T0, 0(T2)
+                          | 4076       | 0x04       | MV T0, T1
+                          | 4080       | 0x00       | LW T1, 0(SP)
+                          | 4084       | 0x06       | ADDI SP, SP, 4
+                          | 4088       | 0x06       | ADDI SP, SP, -4
+                          | 4092       | 0x01       | SW T1, 0(SP)
+                          | 4096       | 0x04       | MV T1, T0
+                          | 4100       | 0x06       | ADDI T0, ZERO, 0
+                          | 4104       | 0x02       | LUI T2, %hi(VAR_BH)
+                          | 4108       | 0x06       | ADDI T2, T2, %lo(VAR_BH)
+                          | 4112       | 0x01       | SW T0, 0(T2)
+                          | 4116       | 0x04       | MV T0, T1
+                          | 4120       | 0x00       | LW T1, 0(SP)
+                          | 4124       | 0x06       | ADDI SP, SP, 4
+                          | 4128       | 0x02       | LUI T2, %hi(_RET_4148)
+                          | 4132       | 0x06       | ADDI T2, T2, %lo(_RET_4148)
+                          | 4136       | 0x06       | ADDI RP, RP, -4
+                          | 4140       | 0x01       | SW T2, 0(RP)
+                          | 4144       | 0x0B       | J ADD64
+                          | 4148       | 0x00       | LW T2, 0(RP)
+                          | 4152       | 0x06       | ADDI RP, RP, 4
+                          | 4156       | 0x0C       | JR T2
+                          | 4160       | 0x0B       | J _SKIP_FUNC_PRINT_RES
+PRINT_RES                 | 4164       | 0x06       | ADDI SP, SP, -4
+                          | 4168       | 0x01       | SW T1, 0(SP)
+                          | 4172       | 0x04       | MV T1, T0
+                          | 4176       | 0x02       | LUI T0, %hi(STRING_MSG_H)
+                          | 4180       | 0x06       | ADDI T0, T0, %lo(STRING_MSG_H)
+                          | 4184       | 0x02       | LUI T2, %hi(_RET_4204)
+                          | 4188       | 0x06       | ADDI T2, T2, %lo(_RET_4204)
+                          | 4192       | 0x06       | ADDI RP, RP, -4
+                          | 4196       | 0x01       | SW T2, 0(RP)
+                          | 4200       | 0x0B       | J PRINT_STR
+                          | 4204       | 0x06       | ADDI SP, SP, -4
+                          | 4208       | 0x01       | SW T1, 0(SP)
+                          | 4212       | 0x04       | MV T1, T0
+                          | 4216       | 0x02       | LUI T0, %hi(VAR_RH)
+                          | 4220       | 0x06       | ADDI T0, T0, %lo(VAR_RH)
+                          | 4224       | 0x00       | LW T0, 0(T0)
+                          | 4228       | 0x02       | LUI T2, 4
+                          | 4232       | 0x06       | ADDI T2, T2, 3836
+                          | 4236       | 0x01       | SW T0, 0(T2)
+                          | 4240       | 0x04       | MV T0, T1
+                          | 4244       | 0x00       | LW T1, 0(SP)
+                          | 4248       | 0x06       | ADDI SP, SP, 4
+                          | 4252       | 0x06       | ADDI SP, SP, -4
+                          | 4256       | 0x01       | SW T1, 0(SP)
+                          | 4260       | 0x04       | MV T1, T0
+                          | 4264       | 0x02       | LUI T0, %hi(STRING_MSG_L)
+                          | 4268       | 0x06       | ADDI T0, T0, %lo(STRING_MSG_L)
+                          | 4272       | 0x02       | LUI T2, %hi(_RET_4292)
+                          | 4276       | 0x06       | ADDI T2, T2, %lo(_RET_4292)
+                          | 4280       | 0x06       | ADDI RP, RP, -4
+                          | 4284       | 0x01       | SW T2, 0(RP)
+                          | 4288       | 0x0B       | J PRINT_STR
+                          | 4292       | 0x06       | ADDI SP, SP, -4
+                          | 4296       | 0x01       | SW T1, 0(SP)
+                          | 4300       | 0x04       | MV T1, T0
+                          | 4304       | 0x02       | LUI T0, %hi(VAR_RL)
+                          | 4308       | 0x06       | ADDI T0, T0, %lo(VAR_RL)
+                          | 4312       | 0x00       | LW T0, 0(T0)
+                          | 4316       | 0x02       | LUI T2, 4
+                          | 4320       | 0x06       | ADDI T2, T2, 3836
+                          | 4324       | 0x01       | SW T0, 0(T2)
+                          | 4328       | 0x04       | MV T0, T1
+                          | 4332       | 0x00       | LW T1, 0(SP)
+                          | 4336       | 0x06       | ADDI SP, SP, 4
+                          | 4340       | 0x02       | LUI T2, %hi(_RET_4360)
+                          | 4344       | 0x06       | ADDI T2, T2, %lo(_RET_4360)
+                          | 4348       | 0x06       | ADDI RP, RP, -4
+                          | 4352       | 0x01       | SW T2, 0(RP)
+                          | 4356       | 0x0B       | J CR
+                          | 4360       | 0x00       | LW T2, 0(RP)
+                          | 4364       | 0x06       | ADDI RP, RP, 4
+                          | 4368       | 0x0C       | JR T2
+                          | 4372       | 0x06       | ADDI SP, SP, -4
+                          | 4376       | 0x01       | SW T1, 0(SP)
+                          | 4380       | 0x04       | MV T1, T0
+                          | 4384       | 0x02       | LUI T0, %hi(STRING_MSG_ADD)
+                          | 4388       | 0x06       | ADDI T0, T0, %lo(STRING_MSG_ADD)
+                          | 4392       | 0x02       | LUI T2, %hi(_RET_4412)
+                          | 4396       | 0x06       | ADDI T2, T2, %lo(_RET_4412)
+                          | 4400       | 0x06       | ADDI RP, RP, -4
+                          | 4404       | 0x01       | SW T2, 0(RP)
+                          | 4408       | 0x0B       | J PRINT_STR
+                          | 4412       | 0x06       | ADDI SP, SP, -4
+                          | 4416       | 0x01       | SW T1, 0(SP)
+                          | 4420       | 0x04       | MV T1, T0
+                          | 4424       | 0x06       | ADDI T0, ZERO, 100
+                          | 4428       | 0x02       | LUI T2, %hi(VAR_AL)
+                          | 4432       | 0x06       | ADDI T2, T2, %lo(VAR_AL)
+                          | 4436       | 0x01       | SW T0, 0(T2)
+                          | 4440       | 0x04       | MV T0, T1
+                          | 4444       | 0x00       | LW T1, 0(SP)
+                          | 4448       | 0x06       | ADDI SP, SP, 4
+                          | 4452       | 0x06       | ADDI SP, SP, -4
+                          | 4456       | 0x01       | SW T1, 0(SP)
+                          | 4460       | 0x04       | MV T1, T0
+                          | 4464       | 0x06       | ADDI T0, ZERO, 1
+                          | 4468       | 0x02       | LUI T2, %hi(VAR_AH)
+                          | 4472       | 0x06       | ADDI T2, T2, %lo(VAR_AH)
+                          | 4476       | 0x01       | SW T0, 0(T2)
+                          | 4480       | 0x04       | MV T0, T1
+                          | 4484       | 0x00       | LW T1, 0(SP)
+                          | 4488       | 0x06       | ADDI SP, SP, 4
+                          | 4492       | 0x06       | ADDI SP, SP, -4
+                          | 4496       | 0x01       | SW T1, 0(SP)
+                          | 4500       | 0x04       | MV T1, T0
+                          | 4504       | 0x06       | ADDI T0, ZERO, 200
+                          | 4508       | 0x02       | LUI T2, %hi(VAR_BL)
+                          | 4512       | 0x06       | ADDI T2, T2, %lo(VAR_BL)
+                          | 4516       | 0x01       | SW T0, 0(T2)
+                          | 4520       | 0x04       | MV T0, T1
+                          | 4524       | 0x00       | LW T1, 0(SP)
+                          | 4528       | 0x06       | ADDI SP, SP, 4
+                          | 4532       | 0x06       | ADDI SP, SP, -4
+                          | 4536       | 0x01       | SW T1, 0(SP)
+                          | 4540       | 0x04       | MV T1, T0
+                          | 4544       | 0x06       | ADDI T0, ZERO, 2
+                          | 4548       | 0x02       | LUI T2, %hi(VAR_BH)
+                          | 4552       | 0x06       | ADDI T2, T2, %lo(VAR_BH)
+                          | 4556       | 0x01       | SW T0, 0(T2)
+                          | 4560       | 0x04       | MV T0, T1
+                          | 4564       | 0x00       | LW T1, 0(SP)
+                          | 4568       | 0x06       | ADDI SP, SP, 4
+                          | 4572       | 0x02       | LUI T2, %hi(_RET_4592)
+                          | 4576       | 0x06       | ADDI T2, T2, %lo(_RET_4592)
+                          | 4580       | 0x06       | ADDI RP, RP, -4
+                          | 4584       | 0x01       | SW T2, 0(RP)
+                          | 4588       | 0x0B       | J ADD64
+                          | 4592       | 0x02       | LUI T2, %hi(_RET_4612)
+                          | 4596       | 0x06       | ADDI T2, T2, %lo(_RET_4612)
+                          | 4600       | 0x06       | ADDI RP, RP, -4
+                          | 4604       | 0x01       | SW T2, 0(RP)
+                          | 4608       | 0x0B       | J PRINT_RES
+                          | 4612       | 0x06       | ADDI SP, SP, -4
+                          | 4616       | 0x01       | SW T1, 0(SP)
+                          | 4620       | 0x04       | MV T1, T0
+                          | 4624       | 0x02       | LUI T0, %hi(STRING_MSG_ADD_C)
+                          | 4628       | 0x06       | ADDI T0, T0, %lo(STRING_MSG_ADD_C)
+                          | 4632       | 0x02       | LUI T2, %hi(_RET_4652)
+                          | 4636       | 0x06       | ADDI T2, T2, %lo(_RET_4652)
+                          | 4640       | 0x06       | ADDI RP, RP, -4
+                          | 4644       | 0x01       | SW T2, 0(RP)
+                          | 4648       | 0x0B       | J PRINT_STR
+                          | 4652       | 0x06       | ADDI SP, SP, -4
+                          | 4656       | 0x01       | SW T1, 0(SP)
+                          | 4660       | 0x04       | MV T1, T0
+                          | 4664       | 0x06       | ADDI T0, ZERO, -1
+                          | 4668       | 0x02       | LUI T2, %hi(VAR_AL)
+                          | 4672       | 0x06       | ADDI T2, T2, %lo(VAR_AL)
+                          | 4676       | 0x01       | SW T0, 0(T2)
+                          | 4680       | 0x04       | MV T0, T1
+                          | 4684       | 0x00       | LW T1, 0(SP)
+                          | 4688       | 0x06       | ADDI SP, SP, 4
+                          | 4692       | 0x06       | ADDI SP, SP, -4
+                          | 4696       | 0x01       | SW T1, 0(SP)
+                          | 4700       | 0x04       | MV T1, T0
+                          | 4704       | 0x06       | ADDI T0, ZERO, 0
+                          | 4708       | 0x02       | LUI T2, %hi(VAR_AH)
+                          | 4712       | 0x06       | ADDI T2, T2, %lo(VAR_AH)
+                          | 4716       | 0x01       | SW T0, 0(T2)
+                          | 4720       | 0x04       | MV T0, T1
+                          | 4724       | 0x00       | LW T1, 0(SP)
+                          | 4728       | 0x06       | ADDI SP, SP, 4
+                          | 4732       | 0x06       | ADDI SP, SP, -4
+                          | 4736       | 0x01       | SW T1, 0(SP)
+                          | 4740       | 0x04       | MV T1, T0
+                          | 4744       | 0x06       | ADDI T0, ZERO, 1
+                          | 4748       | 0x02       | LUI T2, %hi(VAR_BL)
+                          | 4752       | 0x06       | ADDI T2, T2, %lo(VAR_BL)
+                          | 4756       | 0x01       | SW T0, 0(T2)
+                          | 4760       | 0x04       | MV T0, T1
+                          | 4764       | 0x00       | LW T1, 0(SP)
+                          | 4768       | 0x06       | ADDI SP, SP, 4
+                          | 4772       | 0x06       | ADDI SP, SP, -4
+                          | 4776       | 0x01       | SW T1, 0(SP)
+                          | 4780       | 0x04       | MV T1, T0
+                          | 4784       | 0x06       | ADDI T0, ZERO, 0
+                          | 4788       | 0x02       | LUI T2, %hi(VAR_BH)
+                          | 4792       | 0x06       | ADDI T2, T2, %lo(VAR_BH)
+                          | 4796       | 0x01       | SW T0, 0(T2)
+                          | 4800       | 0x04       | MV T0, T1
+                          | 4804       | 0x00       | LW T1, 0(SP)
+                          | 4808       | 0x06       | ADDI SP, SP, 4
+                          | 4812       | 0x02       | LUI T2, %hi(_RET_4832)
+                          | 4816       | 0x06       | ADDI T2, T2, %lo(_RET_4832)
+                          | 4820       | 0x06       | ADDI RP, RP, -4
+                          | 4824       | 0x01       | SW T2, 0(RP)
+                          | 4828       | 0x0B       | J ADD64
+                          | 4832       | 0x02       | LUI T2, %hi(_RET_4852)
+                          | 4836       | 0x06       | ADDI T2, T2, %lo(_RET_4852)
+                          | 4840       | 0x06       | ADDI RP, RP, -4
+                          | 4844       | 0x01       | SW T2, 0(RP)
+                          | 4848       | 0x0B       | J PRINT_RES
+                          | 4852       | 0x06       | ADDI SP, SP, -4
+                          | 4856       | 0x01       | SW T1, 0(SP)
+                          | 4860       | 0x04       | MV T1, T0
+                          | 4864       | 0x02       | LUI T0, %hi(STRING_MSG_SUB)
+                          | 4868       | 0x06       | ADDI T0, T0, %lo(STRING_MSG_SUB)
+                          | 4872       | 0x02       | LUI T2, %hi(_RET_4892)
+                          | 4876       | 0x06       | ADDI T2, T2, %lo(_RET_4892)
+                          | 4880       | 0x06       | ADDI RP, RP, -4
+                          | 4884       | 0x01       | SW T2, 0(RP)
+                          | 4888       | 0x0B       | J PRINT_STR
+                          | 4892       | 0x06       | ADDI SP, SP, -4
+                          | 4896       | 0x01       | SW T1, 0(SP)
+                          | 4900       | 0x04       | MV T1, T0
+                          | 4904       | 0x06       | ADDI T0, ZERO, 500
+                          | 4908       | 0x02       | LUI T2, %hi(VAR_AL)
+                          | 4912       | 0x06       | ADDI T2, T2, %lo(VAR_AL)
+                          | 4916       | 0x01       | SW T0, 0(T2)
+                          | 4920       | 0x04       | MV T0, T1
+                          | 4924       | 0x00       | LW T1, 0(SP)
+                          | 4928       | 0x06       | ADDI SP, SP, 4
+                          | 4932       | 0x06       | ADDI SP, SP, -4
+                          | 4936       | 0x01       | SW T1, 0(SP)
+                          | 4940       | 0x04       | MV T1, T0
+                          | 4944       | 0x06       | ADDI T0, ZERO, 5
+                          | 4948       | 0x02       | LUI T2, %hi(VAR_AH)
+                          | 4952       | 0x06       | ADDI T2, T2, %lo(VAR_AH)
+                          | 4956       | 0x01       | SW T0, 0(T2)
+                          | 4960       | 0x04       | MV T0, T1
+                          | 4964       | 0x00       | LW T1, 0(SP)
+                          | 4968       | 0x06       | ADDI SP, SP, 4
+                          | 4972       | 0x06       | ADDI SP, SP, -4
+                          | 4976       | 0x01       | SW T1, 0(SP)
+                          | 4980       | 0x04       | MV T1, T0
+                          | 4984       | 0x06       | ADDI T0, ZERO, 200
+                          | 4988       | 0x02       | LUI T2, %hi(VAR_BL)
+                          | 4992       | 0x06       | ADDI T2, T2, %lo(VAR_BL)
+                          | 4996       | 0x01       | SW T0, 0(T2)
+                          | 5000       | 0x04       | MV T0, T1
+                          | 5004       | 0x00       | LW T1, 0(SP)
+                          | 5008       | 0x06       | ADDI SP, SP, 4
+                          | 5012       | 0x06       | ADDI SP, SP, -4
+                          | 5016       | 0x01       | SW T1, 0(SP)
+                          | 5020       | 0x04       | MV T1, T0
+                          | 5024       | 0x06       | ADDI T0, ZERO, 2
+                          | 5028       | 0x02       | LUI T2, %hi(VAR_BH)
+                          | 5032       | 0x06       | ADDI T2, T2, %lo(VAR_BH)
+                          | 5036       | 0x01       | SW T0, 0(T2)
+                          | 5040       | 0x04       | MV T0, T1
+                          | 5044       | 0x00       | LW T1, 0(SP)
+                          | 5048       | 0x06       | ADDI SP, SP, 4
+                          | 5052       | 0x02       | LUI T2, %hi(_RET_5072)
+                          | 5056       | 0x06       | ADDI T2, T2, %lo(_RET_5072)
+                          | 5060       | 0x06       | ADDI RP, RP, -4
+                          | 5064       | 0x01       | SW T2, 0(RP)
+                          | 5068       | 0x0B       | J SUB64
+                          | 5072       | 0x02       | LUI T2, %hi(_RET_5092)
+                          | 5076       | 0x06       | ADDI T2, T2, %lo(_RET_5092)
+                          | 5080       | 0x06       | ADDI RP, RP, -4
+                          | 5084       | 0x01       | SW T2, 0(RP)
+                          | 5088       | 0x0B       | J PRINT_RES
+                          | 5092       | 0x06       | ADDI SP, SP, -4
+                          | 5096       | 0x01       | SW T1, 0(SP)
+                          | 5100       | 0x04       | MV T1, T0
+                          | 5104       | 0x02       | LUI T0, %hi(STRING_MSG_SUB_B)
+                          | 5108       | 0x06       | ADDI T0, T0, %lo(STRING_MSG_SUB_B)
+                          | 5112       | 0x02       | LUI T2, %hi(_RET_5132)
+                          | 5116       | 0x06       | ADDI T2, T2, %lo(_RET_5132)
+                          | 5120       | 0x06       | ADDI RP, RP, -4
+                          | 5124       | 0x01       | SW T2, 0(RP)
+                          | 5128       | 0x0B       | J PRINT_STR
+                          | 5132       | 0x06       | ADDI SP, SP, -4
+                          | 5136       | 0x01       | SW T1, 0(SP)
+                          | 5140       | 0x04       | MV T1, T0
+                          | 5144       | 0x06       | ADDI T0, ZERO, 0
+                          | 5148       | 0x02       | LUI T2, %hi(VAR_AL)
+                          | 5152       | 0x06       | ADDI T2, T2, %lo(VAR_AL)
+                          | 5156       | 0x01       | SW T0, 0(T2)
+                          | 5160       | 0x04       | MV T0, T1
+                          | 5164       | 0x00       | LW T1, 0(SP)
+                          | 5168       | 0x06       | ADDI SP, SP, 4
+                          | 5172       | 0x06       | ADDI SP, SP, -4
+                          | 5176       | 0x01       | SW T1, 0(SP)
+                          | 5180       | 0x04       | MV T1, T0
+                          | 5184       | 0x06       | ADDI T0, ZERO, 5
+                          | 5188       | 0x02       | LUI T2, %hi(VAR_AH)
+                          | 5192       | 0x06       | ADDI T2, T2, %lo(VAR_AH)
+                          | 5196       | 0x01       | SW T0, 0(T2)
+                          | 5200       | 0x04       | MV T0, T1
+                          | 5204       | 0x00       | LW T1, 0(SP)
+                          | 5208       | 0x06       | ADDI SP, SP, 4
+                          | 5212       | 0x06       | ADDI SP, SP, -4
+                          | 5216       | 0x01       | SW T1, 0(SP)
+                          | 5220       | 0x04       | MV T1, T0
+                          | 5224       | 0x06       | ADDI T0, ZERO, 1
+                          | 5228       | 0x02       | LUI T2, %hi(VAR_BL)
+                          | 5232       | 0x06       | ADDI T2, T2, %lo(VAR_BL)
+                          | 5236       | 0x01       | SW T0, 0(T2)
+                          | 5240       | 0x04       | MV T0, T1
+                          | 5244       | 0x00       | LW T1, 0(SP)
+                          | 5248       | 0x06       | ADDI SP, SP, 4
+                          | 5252       | 0x06       | ADDI SP, SP, -4
+                          | 5256       | 0x01       | SW T1, 0(SP)
+                          | 5260       | 0x04       | MV T1, T0
+                          | 5264       | 0x06       | ADDI T0, ZERO, 2
+                          | 5268       | 0x02       | LUI T2, %hi(VAR_BH)
+                          | 5272       | 0x06       | ADDI T2, T2, %lo(VAR_BH)
+                          | 5276       | 0x01       | SW T0, 0(T2)
+                          | 5280       | 0x04       | MV T0, T1
+                          | 5284       | 0x00       | LW T1, 0(SP)
+                          | 5288       | 0x06       | ADDI SP, SP, 4
+                          | 5292       | 0x02       | LUI T2, %hi(_RET_5312)
+                          | 5296       | 0x06       | ADDI T2, T2, %lo(_RET_5312)
+                          | 5300       | 0x06       | ADDI RP, RP, -4
+                          | 5304       | 0x01       | SW T2, 0(RP)
+                          | 5308       | 0x0B       | J SUB64
+                          | 5312       | 0x02       | LUI T2, %hi(_RET_5332)
+                          | 5316       | 0x06       | ADDI T2, T2, %lo(_RET_5332)
+                          | 5320       | 0x06       | ADDI RP, RP, -4
+                          | 5324       | 0x01       | SW T2, 0(RP)
+                          | 5328       | 0x0B       | J PRINT_RES
+                          | 5332       | 0x0D       | HALT
+VAR_AL                    | 5392       | 0x00000000 | DATA
+VAR_AH                    | 5396       | 0x00000000 | DATA
+VAR_BL                    | 5400       | 0x00000000 | DATA
+VAR_BH                    | 5404       | 0x00000000 | DATA
+VAR_RL                    | 5408       | 0x00000000 | DATA
+VAR_RH                    | 5412       | 0x00000000 | DATA
+VAR_A31                   | 5416       | 0x00000000 | DATA
+VAR_B31                   | 5420       | 0x00000000 | DATA
+VAR_R31                   | 5424       | 0x00000000 | DATA
+VAR_CARRY_FLAG            | 5428       | 0x00000000 | DATA
+STRING_MSG_ADD            | 5432       | 0x00000010 | DATA
+                          | 5436       | 0x00000036 | DATA
+                          | 5440       | 0x00000034 | DATA
+                          | 5444       | 0x0000002D | DATA
+                          | 5448       | 0x00000062 | DATA
+                          | 5452       | 0x00000069 | DATA
+                          | 5456       | 0x00000074 | DATA
+                          | 5460       | 0x00000020 | DATA
+                          | 5464       | 0x00000041 | DATA
+                          | 5468       | 0x00000064 | DATA
+                          | 5472       | 0x00000064 | DATA
+                          | 5476       | 0x00000069 | DATA
+                          | 5480       | 0x00000074 | DATA
+                          | 5484       | 0x00000069 | DATA
+                          | 5488       | 0x0000006F | DATA
+                          | 5492       | 0x0000006E | DATA
+                          | 5496       | 0x0000000A | DATA
+STRING_MSG_ADD_C          | 5500       | 0x0000001B | DATA
+                          | 5504       | 0x00000036 | DATA
+                          | 5508       | 0x00000034 | DATA
+                          | 5512       | 0x0000002D | DATA
+                          | 5516       | 0x00000062 | DATA
+                          | 5520       | 0x00000069 | DATA
+                          | 5524       | 0x00000074 | DATA
+                          | 5528       | 0x00000020 | DATA
+                          | 5532       | 0x00000041 | DATA
+                          | 5536       | 0x00000064 | DATA
+                          | 5540       | 0x00000064 | DATA
+                          | 5544       | 0x00000069 | DATA
+                          | 5548       | 0x00000074 | DATA
+                          | 5552       | 0x00000069 | DATA
+                          | 5556       | 0x0000006F | DATA
+                          | 5560       | 0x0000006E | DATA
+                          | 5564       | 0x00000020 | DATA
+                          | 5568       | 0x00000077 | DATA
+                          | 5572       | 0x00000069 | DATA
+                          | 5576       | 0x00000074 | DATA
+                          | 5580       | 0x00000068 | DATA
+                          | 5584       | 0x00000020 | DATA
+                          | 5588       | 0x00000063 | DATA
+                          | 5592       | 0x00000061 | DATA
+                          | 5596       | 0x00000072 | DATA
+                          | 5600       | 0x00000072 | DATA
+                          | 5604       | 0x00000079 | DATA
+                          | 5608       | 0x0000000A | DATA
+STRING_MSG_SUB            | 5612       | 0x00000013 | DATA
+                          | 5616       | 0x00000036 | DATA
+                          | 5620       | 0x00000034 | DATA
+                          | 5624       | 0x0000002D | DATA
+                          | 5628       | 0x00000062 | DATA
+                          | 5632       | 0x00000069 | DATA
+                          | 5636       | 0x00000074 | DATA
+                          | 5640       | 0x00000020 | DATA
+                          | 5644       | 0x00000053 | DATA
+                          | 5648       | 0x00000075 | DATA
+                          | 5652       | 0x00000062 | DATA
+                          | 5656       | 0x00000074 | DATA
+                          | 5660       | 0x00000072 | DATA
+                          | 5664       | 0x00000061 | DATA
+                          | 5668       | 0x00000063 | DATA
+                          | 5672       | 0x00000074 | DATA
+                          | 5676       | 0x00000069 | DATA
+                          | 5680       | 0x0000006F | DATA
+                          | 5684       | 0x0000006E | DATA
+                          | 5688       | 0x0000000A | DATA
+STRING_MSG_SUB_B          | 5692       | 0x0000001F | DATA
+                          | 5696       | 0x00000036 | DATA
+                          | 5700       | 0x00000034 | DATA
+                          | 5704       | 0x0000002D | DATA
+                          | 5708       | 0x00000062 | DATA
+                          | 5712       | 0x00000069 | DATA
+                          | 5716       | 0x00000074 | DATA
+                          | 5720       | 0x00000020 | DATA
+                          | 5724       | 0x00000053 | DATA
+                          | 5728       | 0x00000075 | DATA
+                          | 5732       | 0x00000062 | DATA
+                          | 5736       | 0x00000074 | DATA
+                          | 5740       | 0x00000072 | DATA
+                          | 5744       | 0x00000061 | DATA
+                          | 5748       | 0x00000063 | DATA
+                          | 5752       | 0x00000074 | DATA
+                          | 5756       | 0x00000069 | DATA
+                          | 5760       | 0x0000006F | DATA
+                          | 5764       | 0x0000006E | DATA
+                          | 5768       | 0x00000020 | DATA
+                          | 5772       | 0x00000077 | DATA
+                          | 5776       | 0x00000069 | DATA
+                          | 5780       | 0x00000074 | DATA
+                          | 5784       | 0x00000068 | DATA
+                          | 5788       | 0x00000020 | DATA
+                          | 5792       | 0x00000062 | DATA
+                          | 5796       | 0x0000006F | DATA
+                          | 5800       | 0x00000072 | DATA
+                          | 5804       | 0x00000072 | DATA
+                          | 5808       | 0x0000006F | DATA
+                          | 5812       | 0x00000077 | DATA
+                          | 5816       | 0x0000000A | DATA
+STRING_MSG_H              | 5820       | 0x00000006 | DATA
+                          | 5824       | 0x00000048 | DATA
+                          | 5828       | 0x00000069 | DATA
+                          | 5832       | 0x00000067 | DATA
+                          | 5836       | 0x00000068 | DATA
+                          | 5840       | 0x0000003A | DATA
+                          | 5844       | 0x00000020 | DATA
+STRING_MSG_L              | 5848       | 0x00000006 | DATA
+                          | 5852       | 0x00000020 | DATA
+                          | 5856       | 0x0000004C | DATA
+                          | 5860       | 0x0000006F | DATA
+                          | 5864       | 0x00000077 | DATA
+                          | 5868       | 0x0000003A | DATA
+                          | 5872       | 0x00000020 | DATA

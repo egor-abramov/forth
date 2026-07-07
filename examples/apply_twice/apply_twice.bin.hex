@@ -1,0 +1,156 @@
+<label>                   | <address>  | <HEXCODE>  | <mnemonic>
+                          | 2988       | 0x0B       | J _SKIP_FUNC_APPLY_TWICE
+APPLY_TWICE               | 2992       | 0x02       | LUI T2, %hi(VAR_CALLBACK)
+                          | 2996       | 0x06       | ADDI T2, T2, %lo(VAR_CALLBACK)
+                          | 3000       | 0x01       | SW T0, 0(T2)
+                          | 3004       | 0x04       | MV T0, T1
+                          | 3008       | 0x00       | LW T1, 0(SP)
+                          | 3012       | 0x06       | ADDI SP, SP, 4
+                          | 3016       | 0x06       | ADDI SP, SP, -4
+                          | 3020       | 0x01       | SW T1, 0(SP)
+                          | 3024       | 0x04       | MV T1, T0
+                          | 3028       | 0x02       | LUI T0, %hi(VAR_CALLBACK)
+                          | 3032       | 0x06       | ADDI T0, T0, %lo(VAR_CALLBACK)
+                          | 3036       | 0x00       | LW T0, 0(T0)
+                          | 3040       | 0x04       | MV T2, T0
+                          | 3044       | 0x04       | MV T0, T1
+                          | 3048       | 0x00       | LW T1, 0(SP)
+                          | 3052       | 0x06       | ADDI SP, SP, 4
+                          | 3056       | 0x02       | LUI T3, %hi(_EXEC_RET_3056)
+                          | 3060       | 0x06       | ADDI T3, T3, %lo(_EXEC_RET_3056)
+                          | 3064       | 0x06       | ADDI RP, RP, -4
+                          | 3068       | 0x01       | SW T3, 0(RP)
+                          | 3072       | 0x0C       | JR T2
+                          | 3076       | 0x06       | ADDI SP, SP, -4
+                          | 3080       | 0x01       | SW T1, 0(SP)
+                          | 3084       | 0x04       | MV T1, T0
+                          | 3088       | 0x02       | LUI T0, %hi(VAR_CALLBACK)
+                          | 3092       | 0x06       | ADDI T0, T0, %lo(VAR_CALLBACK)
+                          | 3096       | 0x00       | LW T0, 0(T0)
+                          | 3100       | 0x04       | MV T2, T0
+                          | 3104       | 0x04       | MV T0, T1
+                          | 3108       | 0x00       | LW T1, 0(SP)
+                          | 3112       | 0x06       | ADDI SP, SP, 4
+                          | 3116       | 0x02       | LUI T3, %hi(_EXEC_RET_3116)
+                          | 3120       | 0x06       | ADDI T3, T3, %lo(_EXEC_RET_3116)
+                          | 3124       | 0x06       | ADDI RP, RP, -4
+                          | 3128       | 0x01       | SW T3, 0(RP)
+                          | 3132       | 0x0C       | JR T2
+                          | 3136       | 0x00       | LW T2, 0(RP)
+                          | 3140       | 0x06       | ADDI RP, RP, 4
+                          | 3144       | 0x0C       | JR T2
+                          | 3148       | 0x0B       | J _SKIP_FUNC_DOUBLE
+DOUBLE                    | 3152       | 0x06       | ADDI T2, ZERO, 2
+                          | 3156       | 0x09       | MUL T0, T0, T2
+                          | 3160       | 0x00       | LW T2, 0(RP)
+                          | 3164       | 0x06       | ADDI RP, RP, 4
+                          | 3168       | 0x0C       | JR T2
+                          | 3172       | 0x0B       | J _SKIP_FUNC_SQUARE
+SQUARE                    | 3176       | 0x06       | ADDI SP, SP, -4
+                          | 3180       | 0x01       | SW T1, 0(SP)
+                          | 3184       | 0x04       | MV T1, T0
+                          | 3188       | 0x09       | MUL T0, T1, T0
+                          | 3192       | 0x00       | LW T1, 0(SP)
+                          | 3196       | 0x06       | ADDI SP, SP, 4
+                          | 3200       | 0x00       | LW T2, 0(RP)
+                          | 3204       | 0x06       | ADDI RP, RP, 4
+                          | 3208       | 0x0C       | JR T2
+                          | 3212       | 0x06       | ADDI SP, SP, -4
+                          | 3216       | 0x01       | SW T1, 0(SP)
+                          | 3220       | 0x04       | MV T1, T0
+                          | 3224       | 0x02       | LUI T0, %hi(STRING_STR_MSG1)
+                          | 3228       | 0x06       | ADDI T0, T0, %lo(STRING_STR_MSG1)
+                          | 3232       | 0x02       | LUI T2, %hi(_RET_3252)
+                          | 3236       | 0x06       | ADDI T2, T2, %lo(_RET_3252)
+                          | 3240       | 0x06       | ADDI RP, RP, -4
+                          | 3244       | 0x01       | SW T2, 0(RP)
+                          | 3248       | 0x0B       | J PRINT_STR
+                          | 3252       | 0x02       | LUI T2, %hi(_RET_3272)
+                          | 3256       | 0x06       | ADDI T2, T2, %lo(_RET_3272)
+                          | 3260       | 0x06       | ADDI RP, RP, -4
+                          | 3264       | 0x01       | SW T2, 0(RP)
+                          | 3268       | 0x0B       | J CR
+                          | 3272       | 0x06       | ADDI SP, SP, -4
+                          | 3276       | 0x01       | SW T1, 0(SP)
+                          | 3280       | 0x04       | MV T1, T0
+                          | 3284       | 0x06       | ADDI T0, ZERO, 5
+                          | 3288       | 0x06       | ADDI SP, SP, -4
+                          | 3292       | 0x01       | SW T1, 0(SP)
+                          | 3296       | 0x04       | MV T1, T0
+                          | 3300       | 0x02       | LUI T0, %hi(DOUBLE)
+                          | 3304       | 0x06       | ADDI T0, T0, %lo(DOUBLE)
+                          | 3308       | 0x02       | LUI T2, %hi(_RET_3328)
+                          | 3312       | 0x06       | ADDI T2, T2, %lo(_RET_3328)
+                          | 3316       | 0x06       | ADDI RP, RP, -4
+                          | 3320       | 0x01       | SW T2, 0(RP)
+                          | 3324       | 0x0B       | J APPLY_TWICE
+                          | 3328       | 0x02       | LUI T2, 4
+                          | 3332       | 0x06       | ADDI T2, T2, 3836
+                          | 3336       | 0x01       | SW T0, 0(T2)
+                          | 3340       | 0x04       | MV T0, T1
+                          | 3344       | 0x00       | LW T1, 0(SP)
+                          | 3348       | 0x06       | ADDI SP, SP, 4
+                          | 3352       | 0x02       | LUI T2, %hi(_RET_3372)
+                          | 3356       | 0x06       | ADDI T2, T2, %lo(_RET_3372)
+                          | 3360       | 0x06       | ADDI RP, RP, -4
+                          | 3364       | 0x01       | SW T2, 0(RP)
+                          | 3368       | 0x0B       | J CR
+                          | 3372       | 0x06       | ADDI SP, SP, -4
+                          | 3376       | 0x01       | SW T1, 0(SP)
+                          | 3380       | 0x04       | MV T1, T0
+                          | 3384       | 0x02       | LUI T0, %hi(STRING_STR_MSG2)
+                          | 3388       | 0x06       | ADDI T0, T0, %lo(STRING_STR_MSG2)
+                          | 3392       | 0x02       | LUI T2, %hi(_RET_3412)
+                          | 3396       | 0x06       | ADDI T2, T2, %lo(_RET_3412)
+                          | 3400       | 0x06       | ADDI RP, RP, -4
+                          | 3404       | 0x01       | SW T2, 0(RP)
+                          | 3408       | 0x0B       | J PRINT_STR
+                          | 3412       | 0x02       | LUI T2, %hi(_RET_3432)
+                          | 3416       | 0x06       | ADDI T2, T2, %lo(_RET_3432)
+                          | 3420       | 0x06       | ADDI RP, RP, -4
+                          | 3424       | 0x01       | SW T2, 0(RP)
+                          | 3428       | 0x0B       | J CR
+                          | 3432       | 0x06       | ADDI SP, SP, -4
+                          | 3436       | 0x01       | SW T1, 0(SP)
+                          | 3440       | 0x04       | MV T1, T0
+                          | 3444       | 0x06       | ADDI T0, ZERO, 3
+                          | 3448       | 0x06       | ADDI SP, SP, -4
+                          | 3452       | 0x01       | SW T1, 0(SP)
+                          | 3456       | 0x04       | MV T1, T0
+                          | 3460       | 0x02       | LUI T0, %hi(SQUARE)
+                          | 3464       | 0x06       | ADDI T0, T0, %lo(SQUARE)
+                          | 3468       | 0x02       | LUI T2, %hi(_RET_3488)
+                          | 3472       | 0x06       | ADDI T2, T2, %lo(_RET_3488)
+                          | 3476       | 0x06       | ADDI RP, RP, -4
+                          | 3480       | 0x01       | SW T2, 0(RP)
+                          | 3484       | 0x0B       | J APPLY_TWICE
+                          | 3488       | 0x02       | LUI T2, 4
+                          | 3492       | 0x06       | ADDI T2, T2, 3836
+                          | 3496       | 0x01       | SW T0, 0(T2)
+                          | 3500       | 0x04       | MV T0, T1
+                          | 3504       | 0x00       | LW T1, 0(SP)
+                          | 3508       | 0x06       | ADDI SP, SP, 4
+                          | 3512       | 0x0D       | HALT
+VAR_CALLBACK              | 3572       | 0x00000000 | DATA
+STRING_STR_MSG1           | 3576       | 0x0000000A | DATA
+                          | 3580       | 0x00000044 | DATA
+                          | 3584       | 0x0000006F | DATA
+                          | 3588       | 0x00000075 | DATA
+                          | 3592       | 0x00000062 | DATA
+                          | 3596       | 0x0000006C | DATA
+                          | 3600       | 0x00000065 | DATA
+                          | 3604       | 0x00000054 | DATA
+                          | 3608       | 0x00000065 | DATA
+                          | 3612       | 0x00000073 | DATA
+                          | 3616       | 0x00000074 | DATA
+STRING_STR_MSG2           | 3620       | 0x0000000A | DATA
+                          | 3624       | 0x00000053 | DATA
+                          | 3628       | 0x00000071 | DATA
+                          | 3632       | 0x00000075 | DATA
+                          | 3636       | 0x00000061 | DATA
+                          | 3640       | 0x00000072 | DATA
+                          | 3644       | 0x00000065 | DATA
+                          | 3648       | 0x00000054 | DATA
+                          | 3652       | 0x00000065 | DATA
+                          | 3656       | 0x00000073 | DATA
+                          | 3660       | 0x00000074 | DATA

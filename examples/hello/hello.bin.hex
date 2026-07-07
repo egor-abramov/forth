@@ -1,0 +1,25 @@
+<label>                   | <address>  | <HEXCODE>  | <mnemonic>
+                          | 2988       | 0x06       | ADDI SP, SP, -4
+                          | 2992       | 0x01       | SW T1, 0(SP)
+                          | 2996       | 0x04       | MV T1, T0
+                          | 3000       | 0x02       | LUI T0, %hi(STRING_HELLO)
+                          | 3004       | 0x06       | ADDI T0, T0, %lo(STRING_HELLO)
+                          | 3008       | 0x02       | LUI T2, %hi(_RET_3028)
+                          | 3012       | 0x06       | ADDI T2, T2, %lo(_RET_3028)
+                          | 3016       | 0x06       | ADDI RP, RP, -4
+                          | 3020       | 0x01       | SW T2, 0(RP)
+                          | 3024       | 0x0B       | J PRINT_STR
+                          | 3028       | 0x0D       | HALT
+STRING_HELLO              | 3088       | 0x0000000C | DATA
+                          | 3092       | 0x00000048 | DATA
+                          | 3096       | 0x00000065 | DATA
+                          | 3100       | 0x0000006C | DATA
+                          | 3104       | 0x0000006C | DATA
+                          | 3108       | 0x0000006F | DATA
+                          | 3112       | 0x00000020 | DATA
+                          | 3116       | 0x00000057 | DATA
+                          | 3120       | 0x0000006F | DATA
+                          | 3124       | 0x00000072 | DATA
+                          | 3128       | 0x0000006C | DATA
+                          | 3132       | 0x00000064 | DATA
+                          | 3136       | 0x00000021 | DATA

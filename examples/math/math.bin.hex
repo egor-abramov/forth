@@ -1,0 +1,104 @@
+<label>                   | <address>  | <HEXCODE>  | <mnemonic>
+                          | 2988       | 0x0B       | J _SKIP_FUNC_SQUARE
+SQUARE                    | 2992       | 0x06       | ADDI SP, SP, -4
+                          | 2996       | 0x01       | SW T1, 0(SP)
+                          | 3000       | 0x04       | MV T1, T0
+                          | 3004       | 0x09       | MUL T0, T1, T0
+                          | 3008       | 0x00       | LW T1, 0(SP)
+                          | 3012       | 0x06       | ADDI SP, SP, 4
+                          | 3016       | 0x00       | LW T2, 0(RP)
+                          | 3020       | 0x06       | ADDI RP, RP, 4
+                          | 3024       | 0x0C       | JR T2
+                          | 3028       | 0x06       | ADDI SP, SP, -4
+                          | 3032       | 0x01       | SW T1, 0(SP)
+                          | 3036       | 0x04       | MV T1, T0
+                          | 3040       | 0x06       | ADDI T0, ZERO, 5
+                          | 3044       | 0x02       | LUI T2, %hi(_RET_3064)
+                          | 3048       | 0x06       | ADDI T2, T2, %lo(_RET_3064)
+                          | 3052       | 0x06       | ADDI RP, RP, -4
+                          | 3056       | 0x01       | SW T2, 0(RP)
+                          | 3060       | 0x0B       | J SQUARE
+                          | 3064       | 0x02       | LUI T2, 4
+                          | 3068       | 0x06       | ADDI T2, T2, 3836
+                          | 3072       | 0x01       | SW T0, 0(T2)
+                          | 3076       | 0x04       | MV T0, T1
+                          | 3080       | 0x00       | LW T1, 0(SP)
+                          | 3084       | 0x06       | ADDI SP, SP, 4
+                          | 3088       | 0x02       | LUI T2, %hi(_RET_3108)
+                          | 3092       | 0x06       | ADDI T2, T2, %lo(_RET_3108)
+                          | 3096       | 0x06       | ADDI RP, RP, -4
+                          | 3100       | 0x01       | SW T2, 0(RP)
+                          | 3104       | 0x0B       | J CR
+                          | 3108       | 0x06       | ADDI SP, SP, -4
+                          | 3112       | 0x01       | SW T1, 0(SP)
+                          | 3116       | 0x04       | MV T1, T0
+                          | 3120       | 0x06       | ADDI T0, ZERO, 2
+                          | 3124       | 0x06       | ADDI SP, SP, -4
+                          | 3128       | 0x01       | SW T1, 0(SP)
+                          | 3132       | 0x04       | MV T1, T0
+                          | 3136       | 0x02       | LUI T0, %hi(SQUARE)
+                          | 3140       | 0x06       | ADDI T0, T0, %lo(SQUARE)
+                          | 3144       | 0x04       | MV T2, T0
+                          | 3148       | 0x04       | MV T0, T1
+                          | 3152       | 0x00       | LW T1, 0(SP)
+                          | 3156       | 0x06       | ADDI SP, SP, 4
+                          | 3160       | 0x02       | LUI T3, %hi(_EXEC_RET_3160)
+                          | 3164       | 0x06       | ADDI T3, T3, %lo(_EXEC_RET_3160)
+                          | 3168       | 0x06       | ADDI RP, RP, -4
+                          | 3172       | 0x01       | SW T3, 0(RP)
+                          | 3176       | 0x0C       | JR T2
+                          | 3180       | 0x02       | LUI T2, 4
+                          | 3184       | 0x06       | ADDI T2, T2, 3836
+                          | 3188       | 0x01       | SW T0, 0(T2)
+                          | 3192       | 0x04       | MV T0, T1
+                          | 3196       | 0x00       | LW T1, 0(SP)
+                          | 3200       | 0x06       | ADDI SP, SP, 4
+                          | 3204       | 0x06       | ADDI SP, SP, -4
+                          | 3208       | 0x01       | SW T1, 0(SP)
+                          | 3212       | 0x04       | MV T1, T0
+                          | 3216       | 0x06       | ADDI T0, ZERO, 100
+                          | 3220       | 0x06       | ADDI T2, ZERO, 5
+                          | 3224       | 0x0F       | MOD T0, T0, T2
+                          | 3228       | 0x02       | LUI T2, 4
+                          | 3232       | 0x06       | ADDI T2, T2, 3836
+                          | 3236       | 0x01       | SW T0, 0(T2)
+                          | 3240       | 0x04       | MV T0, T1
+                          | 3244       | 0x00       | LW T1, 0(SP)
+                          | 3248       | 0x06       | ADDI SP, SP, 4
+                          | 3252       | 0x06       | ADDI SP, SP, -4
+                          | 3256       | 0x01       | SW T1, 0(SP)
+                          | 3260       | 0x04       | MV T1, T0
+                          | 3264       | 0x06       | ADDI T0, ZERO, 100
+                          | 3268       | 0x06       | ADDI T2, ZERO, 3
+                          | 3272       | 0x0F       | MOD T0, T0, T2
+                          | 3276       | 0x02       | LUI T2, 4
+                          | 3280       | 0x06       | ADDI T2, T2, 3836
+                          | 3284       | 0x01       | SW T0, 0(T2)
+                          | 3288       | 0x04       | MV T0, T1
+                          | 3292       | 0x00       | LW T1, 0(SP)
+                          | 3296       | 0x06       | ADDI SP, SP, 4
+                          | 3300       | 0x06       | ADDI SP, SP, -4
+                          | 3304       | 0x01       | SW T1, 0(SP)
+                          | 3308       | 0x04       | MV T1, T0
+                          | 3312       | 0x06       | ADDI T0, ZERO, 21
+                          | 3316       | 0x06       | ADDI T2, ZERO, 7
+                          | 3320       | 0x0E       | DIV T0, T0, T2
+                          | 3324       | 0x02       | LUI T2, 4
+                          | 3328       | 0x06       | ADDI T2, T2, 3836
+                          | 3332       | 0x01       | SW T0, 0(T2)
+                          | 3336       | 0x04       | MV T0, T1
+                          | 3340       | 0x00       | LW T1, 0(SP)
+                          | 3344       | 0x06       | ADDI SP, SP, 4
+                          | 3348       | 0x06       | ADDI SP, SP, -4
+                          | 3352       | 0x01       | SW T1, 0(SP)
+                          | 3356       | 0x04       | MV T1, T0
+                          | 3360       | 0x06       | ADDI T0, ZERO, 21
+                          | 3364       | 0x06       | ADDI T2, ZERO, 4
+                          | 3368       | 0x0E       | DIV T0, T0, T2
+                          | 3372       | 0x02       | LUI T2, 4
+                          | 3376       | 0x06       | ADDI T2, T2, 3836
+                          | 3380       | 0x01       | SW T0, 0(T2)
+                          | 3384       | 0x04       | MV T0, T1
+                          | 3388       | 0x00       | LW T1, 0(SP)
+                          | 3392       | 0x06       | ADDI SP, SP, 4
+                          | 3396       | 0x0D       | HALT

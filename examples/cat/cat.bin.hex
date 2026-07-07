@@ -1,0 +1,45 @@
+<label>                   | <address>  | <HEXCODE>  | <mnemonic>
+LOOP_2988                 | 2988       | 0x06       | ADDI SP, SP, -4
+                          | 2992       | 0x01       | SW T1, 0(SP)
+                          | 2996       | 0x04       | MV T1, T0
+                          | 3000       | 0x02       | LUI T2, 4
+                          | 3004       | 0x06       | ADDI T2, T2, 3832
+                          | 3008       | 0x00       | LW T0, 0(T2)
+                          | 3012       | 0x06       | ADDI SP, SP, -4
+                          | 3016       | 0x01       | SW T1, 0(SP)
+                          | 3020       | 0x04       | MV T1, T0
+                          | 3024       | 0x06       | ADDI T0, T0, -10
+                          | 3028       | 0x04       | MV T2, T0
+                          | 3032       | 0x06       | ADDI T0, ZERO, 0
+                          | 3036       | 0x03       | JZ T2, IS_TRUE_3028
+                          | 3040       | 0x0B       | J IS_FALSE_3028
+IS_TRUE_3028              | 3044       | 0x06       | ADDI T0, ZERO, 1
+IS_FALSE_3028             | 3048       | 0x04       | MV T2, T0
+                          | 3052       | 0x04       | MV T0, T1
+                          | 3056       | 0x00       | LW T1, 0(SP)
+                          | 3060       | 0x06       | ADDI SP, SP, 4
+                          | 3064       | 0x03       | JZ T2, IF_FALSE_3048
+                          | 3068       | 0x04       | MV T0, T1
+                          | 3072       | 0x00       | LW T1, 0(SP)
+                          | 3076       | 0x06       | ADDI SP, SP, 4
+                          | 3080       | 0x06       | ADDI SP, SP, -4
+                          | 3084       | 0x01       | SW T1, 0(SP)
+                          | 3088       | 0x04       | MV T1, T0
+                          | 3092       | 0x06       | ADDI T0, ZERO, 0
+                          | 3096       | 0x0B       | J IF_END_3096
+IF_FALSE_3048             | 3100       | 0x02       | LUI T2, %hi(_RET_3120)
+                          | 3104       | 0x06       | ADDI T2, T2, %lo(_RET_3120)
+                          | 3108       | 0x06       | ADDI RP, RP, -4
+                          | 3112       | 0x01       | SW T2, 0(RP)
+                          | 3116       | 0x0B       | J EMIT
+                          | 3120       | 0x06       | ADDI SP, SP, -4
+                          | 3124       | 0x01       | SW T1, 0(SP)
+                          | 3128       | 0x04       | MV T1, T0
+                          | 3132       | 0x06       | ADDI T0, ZERO, 1
+IF_END_3096               | 3136       | 0x04       | MV T2, T0
+                          | 3140       | 0x04       | MV T0, T1
+                          | 3144       | 0x00       | LW T1, 0(SP)
+                          | 3148       | 0x06       | ADDI SP, SP, 4
+                          | 3152       | 0x03       | JZ T2, ENDLOOP_3136
+                          | 3156       | 0x0B       | J LOOP_2988
+ENDLOOP_3136              | 3160       | 0x0D       | HALT
