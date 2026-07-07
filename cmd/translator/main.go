@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"forth/translator"
+	"log"
 	"os"
 )
 
@@ -19,4 +20,5 @@ func main() {
 	sourcePath := args[0]
 	targetPath := args[1]
 	translator.Translate(sourcePath, targetPath)
+	log.Printf("Translated %s to %s", sourcePath, targetPath)
 }

@@ -54,9 +54,7 @@ func newMemory(initialMem []int32, inputBuffer []int32) *memory {
 	}
 
 	mem := make([]int32, memory.memSize)
-	for i := 0; i < len(initialMem); i++ {
-		mem[i] = initialMem[i]
-	}
+	copy(mem, initialMem)
 	memory.mem = mem
 
 	return &memory

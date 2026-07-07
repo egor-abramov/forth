@@ -40,13 +40,14 @@ func translateTokens(tokens []token, emitter *Emitter) error {
 		if isSuccess {
 			continue
 		}
-		if token.typ == "WORD" {
+		switch token.typ {
+		case "WORD":
 			nextI, err := translateWord(i, tokens, emitter)
 			if err != nil {
 				return err
 			}
 			i = nextI
-		} else if token.typ == "NUMBER" {
+		case "NUMBER":
 			lastNumber = token.valNum
 			emitter.emitLit(token.valNum)
 		}
@@ -445,16 +446,18 @@ func resolveLabels(program isa.Program) (isa.Program, error) {
 			}
 
 			val := int32(imm)
-			if instr.Macros == isa.MacroHi {
+			switch instr.Macros {
+			case isa.MacroHi:
 				upper := (val >> 12) & 0xFFFFF
 				lower := val & 0xFFF
 				if lower&0x800 != 0 {
 					upper++
 				}
 				program.Instructions[i].Imm = upper
-			} else if instr.Macros == isa.MacroLo {
+			case isa.MacroLo:
 				program.Instructions[i].Imm = val & 0xFFF
-			} else {
+
+			default:
 				program.Instructions[i].Imm = val
 			}
 		}
@@ -543,5 +546,4 @@ func Translate(sourcePath, targetPath string) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Translated %s to %s", sourcePath, targetPath)
 }

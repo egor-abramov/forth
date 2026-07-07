@@ -388,7 +388,7 @@ func (cu *controlUnit) hazardsResolve(ir1, ir2 int32) bool {
 		return false
 	}
 
-	opcode1, _ := isa.BinaryToOpcode[(ir1>>27)&0x1F]
+	opcode1 := isa.BinaryToOpcode[(ir1>>27)&0x1F]
 	opcode2, ok2 := isa.BinaryToOpcode[(ir2>>27)&0x1F]
 
 	branches := []isa.Opcode{isa.OpJ, isa.OpJR, isa.OpJZ, isa.OpJG, isa.OpJL, isa.OpHALT}
@@ -438,13 +438,13 @@ func (cu *controlUnit) hazardsResolve(ir1, ir2 int32) bool {
 
 func (cu *controlUnit) nextMPC(mpc int32, mc MicroCommand) int32 {
 	jmpAddr := mc.jmpAddr
-	opcode, _ := isa.BinaryToOpcode[(cu.dp.ir1>>27)&0x1F]
+	opcode := isa.BinaryToOpcode[(cu.dp.ir1>>27)&0x1F]
 
 	switch mc.jmpMode {
 	case seqInc:
 		return mpc + 1
 	case seqMap:
-		addr, _ := cu.dispatchTable[opcode]
+		addr := cu.dispatchTable[opcode]
 		return addr
 	case seqJmp:
 		return jmpAddr
