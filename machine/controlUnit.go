@@ -449,20 +449,20 @@ func (cu *controlUnit) nextMPC(mpc int32, mc MicroCommand) int32 {
 	case seqJmp:
 		return jmpAddr
 	case seqJmpZ:
-		if f, _ := cu.dp.flags["Z"]; f == 1 {
+		if f := cu.dp.flags["Z"]; f == 1 {
 			return jmpAddr
 		}
 		return mpc + 1
 	case seqJmpG:
-		n, _ := cu.dp.flags["N"]
-		z, _ := cu.dp.flags["Z"]
+		n := cu.dp.flags["N"]
+		z := cu.dp.flags["Z"]
 		if n != 1 && z != 1 {
 			return jmpAddr
 		}
 		return mpc + 1
 	case seqJmpL:
-		n, _ := cu.dp.flags["N"]
-		z, _ := cu.dp.flags["Z"]
+		n := cu.dp.flags["N"]
+		z := cu.dp.flags["Z"]
 		if n == 1 && z != 1 {
 			return jmpAddr
 		}
@@ -494,8 +494,8 @@ func (cu *controlUnit) tick() (bool, error) {
 		return false, err
 	}
 	if mc1.jmpMode == seqMap && cu.mpc1 == 0 && cu.mpc2 == 0 {
-		op1, _ := isa.BinaryToOpcode[(cu.dp.ir1>>27)&0x1F]
-		op2, _ := isa.BinaryToOpcode[(cu.dp.ir2>>27)&0x1F]
+		op1 := isa.BinaryToOpcode[(cu.dp.ir1>>27)&0x1F]
+		op2 := isa.BinaryToOpcode[(cu.dp.ir2>>27)&0x1F]
 
 		op1Addr, ok1 := cu.dispatchTable[op1]
 		if !ok1 {
