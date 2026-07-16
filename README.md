@@ -38,7 +38,8 @@
 	        | "@" 		                  
 
 <io_op> ::= "read" 		        
-	      | "." 	        
+	      | "." 	    
+	      | "emit"    
 
 <loop_exp> ::= "loop" <instruction_list> "endloop" 					                
 
