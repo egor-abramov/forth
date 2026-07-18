@@ -118,12 +118,12 @@ func translateWord(index int, tokens []token, emitter *Emitter) (int, error) {
 		emitter.emit(isa.MV(isa.T0, isa.T1))
 		emitter.emit(isa.LW(isa.T1, isa.SP, 0))
 		emitter.emit(isa.ADDI(isa.SP, isa.SP, 4))
-	//case "EMIT":
-	//	emitter.emitLoadImmNum(isa.T2, outputCharAddr)
-	//	emitter.emit(isa.SW(isa.T0, isa.T2, 0))
-	//	emitter.emit(isa.MV(isa.T0, isa.T1))
-	//	emitter.emit(isa.LW(isa.T1, isa.SP, 0))
-	//	emitter.emit(isa.ADDI(isa.SP, isa.SP, 4))
+	case "EMIT":
+		emitter.emitLoadImmNum(isa.T2, outputCharAddr)
+		emitter.emit(isa.SW(isa.T0, isa.T2, 0))
+		emitter.emit(isa.MV(isa.T0, isa.T1))
+		emitter.emit(isa.LW(isa.T1, isa.SP, 0))
+		emitter.emit(isa.ADDI(isa.SP, isa.SP, 4))
 	case "LOOP":
 		loopLabel := fmt.Sprintf("LOOP_%d", emitter.curAddr)
 		loopStack = append(loopStack, loopLabel)

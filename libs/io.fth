@@ -1,4 +1,3 @@
-: emit 16128 ! ;
 : cr 10 emit ;
 
 var _str_ptr
