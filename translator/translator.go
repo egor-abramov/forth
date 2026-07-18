@@ -214,15 +214,16 @@ func translateWord(index int, tokens []token, emitter *Emitter) (int, error) {
 		ifElem := ifStack[last]
 		ifStack = ifStack[:last]
 
-		if ifElem.tag == "else" {
+		switch ifElem.tag {
+		case "else":
 			if currentDepth != ifElem.depthAfter && !isCurrentUnsafe {
 				return index, fmt.Errorf("branch stack mismatch: IF ended with %d, ELSE ended with %d", ifElem.depthAfter, currentDepth)
 			}
-		} else if ifElem.tag == "if" {
+		case "if":
 			if currentDepth != ifElem.depthBefore && !isCurrentUnsafe {
 				return index, fmt.Errorf("branch stack mismatch: IF block changed stack depth without ELSE")
 			}
-		} else {
+		default:
 			return index, fmt.Errorf("syntax error: if expected")
 		}
 		emitter.emitLabel(ifElem.label)
