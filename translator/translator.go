@@ -30,12 +30,16 @@ type IfStackElem = struct {
 	depthBefore int32
 	depthAfter  int32
 }
+type LoopStackElem = struct {
+	label       string
+	depthBefore int32
+}
 
 var (
 	var2Label = map[string]string{}
 	word2addr = map[string]int{}
 
-	loopStack  []string
+	loopStack  []LoopStackElem
 	ifStack    []IfStackElem
 	funcSkips  []string
 	lastNumber int32 = 0
@@ -156,22 +160,33 @@ func translateWord(index int, tokens []token, emitter *Emitter) (int, error) {
 		currentDepth--
 	case "LOOP":
 		loopLabel := fmt.Sprintf("LOOP_%d", emitter.curAddr)
-		loopStack = append(loopStack, loopLabel)
+		loopElem := LoopStackElem{
+			label:       loopLabel,
+			depthBefore: currentDepth,
+		}
+
+		loopStack = append(loopStack, loopElem)
 		emitter.emitLabel(loopLabel)
 	case "ENDLOOP":
 		if len(loopStack) == 0 {
 			return index, fmt.Errorf("syntax error: loop expected")
 		}
 		last := len(loopStack) - 1
-		beginLoopLabel := loopStack[last]
+		loopElem := loopStack[last]
 		loopStack = loopStack[:last]
+
+		if currentDepth != loopElem.depthBefore+1 && !isCurrentUnsafe {
+			delta := currentDepth - loopElem.depthBefore
+			return index, fmt.Errorf("loop stack mismatch: body must leave exactly 1 condition element, but net effect is %+d", delta)
+		}
+
 		endLoopLabel := fmt.Sprintf("ENDLOOP_%d", emitter.curAddr)
 		emitter.emit(isa.MV(isa.T2, isa.T0))
 		emitter.emit(isa.MV(isa.T0, isa.T1))
 		emitter.emit(isa.LW(isa.T1, isa.SP, 0))
 		emitter.emit(isa.ADDI(isa.SP, isa.SP, 4))
 		emitter.emit(isa.JZ(isa.T2, endLoopLabel))
-		emitter.emit(isa.J(beginLoopLabel))
+		emitter.emit(isa.J(loopElem.label))
 		emitter.emitLabel(endLoopLabel)
 		currentDepth--
 	case "IF":

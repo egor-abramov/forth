@@ -1,25 +1,50 @@
 <label>                   | <address>  | <HEXCODE>  | <mnemonic>
-                          | 2988       | 0x06       | ADDI SP, SP, -4
-                          | 2992       | 0x01       | SW T1, 0(SP)
-                          | 2996       | 0x04       | MV T1, T0
-                          | 3000       | 0x02       | LUI T0, %hi(STRING_HELLO)
-                          | 3004       | 0x06       | ADDI T0, T0, %lo(STRING_HELLO)
-                          | 3008       | 0x02       | LUI T2, %hi(_RET_3028)
-                          | 3012       | 0x06       | ADDI T2, T2, %lo(_RET_3028)
-                          | 3016       | 0x06       | ADDI RP, RP, -4
-                          | 3020       | 0x01       | SW T2, 0(RP)
-                          | 3024       | 0x0B       | J PRINT_STR
-                          | 3028       | 0x0D       | HALT
-STRING_HELLO              | 3088       | 0x0000000C | DATA
-                          | 3092       | 0x00000048 | DATA
-                          | 3096       | 0x00000065 | DATA
-                          | 3100       | 0x0000006C | DATA
-                          | 3104       | 0x0000006C | DATA
-                          | 3108       | 0x0000006F | DATA
-                          | 3112       | 0x00000020 | DATA
-                          | 3116       | 0x00000057 | DATA
-                          | 3120       | 0x0000006F | DATA
-                          | 3124       | 0x00000072 | DATA
-                          | 3128       | 0x0000006C | DATA
-                          | 3132       | 0x00000064 | DATA
-                          | 3136       | 0x00000021 | DATA
+                          | 16         | 0x06       | ADDI SP, SP, -4
+                          | 20         | 0x01       | SW T1, 0(SP)
+                          | 24         | 0x04       | MV T1, T0
+                          | 28         | 0x06       | ADDI T0, ZERO, 5
+                          | 32         | 0x02       | LUI T2, %hi(VAR_CNT)
+                          | 36         | 0x06       | ADDI T2, T2, %lo(VAR_CNT)
+                          | 40         | 0x01       | SW T0, 0(T2)
+                          | 44         | 0x04       | MV T0, T1
+                          | 48         | 0x00       | LW T1, 0(SP)
+                          | 52         | 0x06       | ADDI SP, SP, 4
+LOOP_56                   | 56         | 0x06       | ADDI SP, SP, -4
+                          | 60         | 0x01       | SW T1, 0(SP)
+                          | 64         | 0x04       | MV T1, T0
+                          | 68         | 0x02       | LUI T0, %hi(VAR_CNT)
+                          | 72         | 0x06       | ADDI T0, T0, %lo(VAR_CNT)
+                          | 76         | 0x00       | LW T0, 0(T0)
+                          | 80         | 0x02       | LUI T2, 4
+                          | 84         | 0x06       | ADDI T2, T2, 3836
+                          | 88         | 0x01       | SW T0, 0(T2)
+                          | 92         | 0x04       | MV T0, T1
+                          | 96         | 0x00       | LW T1, 0(SP)
+                          | 100        | 0x06       | ADDI SP, SP, 4
+                          | 104        | 0x06       | ADDI SP, SP, -4
+                          | 108        | 0x01       | SW T1, 0(SP)
+                          | 112        | 0x04       | MV T1, T0
+                          | 116        | 0x02       | LUI T0, %hi(VAR_CNT)
+                          | 120        | 0x06       | ADDI T0, T0, %lo(VAR_CNT)
+                          | 124        | 0x00       | LW T0, 0(T0)
+                          | 128        | 0x06       | ADDI T0, T0, -1
+                          | 132        | 0x02       | LUI T2, %hi(VAR_CNT)
+                          | 136        | 0x06       | ADDI T2, T2, %lo(VAR_CNT)
+                          | 140        | 0x01       | SW T0, 0(T2)
+                          | 144        | 0x04       | MV T0, T1
+                          | 148        | 0x00       | LW T1, 0(SP)
+                          | 152        | 0x06       | ADDI SP, SP, 4
+                          | 156        | 0x06       | ADDI SP, SP, -4
+                          | 160        | 0x01       | SW T1, 0(SP)
+                          | 164        | 0x04       | MV T1, T0
+                          | 168        | 0x02       | LUI T0, %hi(VAR_CNT)
+                          | 172        | 0x06       | ADDI T0, T0, %lo(VAR_CNT)
+                          | 176        | 0x00       | LW T0, 0(T0)
+                          | 180        | 0x04       | MV T2, T0
+                          | 184        | 0x04       | MV T0, T1
+                          | 188        | 0x00       | LW T1, 0(SP)
+                          | 192        | 0x06       | ADDI SP, SP, 4
+                          | 196        | 0x03       | JZ T2, ENDLOOP_180
+                          | 200        | 0x0B       | J LOOP_56
+ENDLOOP_180               | 204        | 0x0D       | HALT
+VAR_CNT                   | 208        | 0x00000000 | DATA
