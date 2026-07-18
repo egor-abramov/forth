@@ -18,17 +18,35 @@ const (
 	outputCharAddr      = 0x3F00
 )
 
+type Contract = struct {
+	Takes    int32
+	Puts     int32
+	IsUnsafe bool
+}
+
+type IfStackElem = struct {
+	tag         string
+	label       string
+	depthBefore int32
+	depthAfter  int32
+}
+
 var (
 	var2Label = map[string]string{}
 	word2addr = map[string]int{}
 
-	loopStack []string
-	ifStack   []struct {
-		tag   string
-		label string
-	}
+	loopStack  []string
+	ifStack    []IfStackElem
 	funcSkips  []string
 	lastNumber int32 = 0
+
+	funcContracts = map[string]Contract{}
+
+	currentDepth    int32
+	savedDepth      int32
+	expectedPuts    int32
+	isCurrentUnsafe bool
+	currentProc     string
 )
 
 func translateTokens(tokens []token, emitter *Emitter) error {
@@ -50,6 +68,7 @@ func translateTokens(tokens []token, emitter *Emitter) error {
 		case "NUMBER":
 			lastNumber = token.valNum
 			emitter.emitLit(token.valNum)
+			currentDepth++
 		}
 		i++
 	}
@@ -65,14 +84,17 @@ func translateWord(index int, tokens []token, emitter *Emitter) (int, error) {
 		emitter.emit(isa.ADD(isa.T0, isa.T1, isa.T0))
 		emitter.emit(isa.LW(isa.T1, isa.SP, 0))
 		emitter.emit(isa.ADDI(isa.SP, isa.SP, 4))
+		currentDepth--
 	case "-":
 		emitter.emit(isa.SUB(isa.T0, isa.T1, isa.T0))
 		emitter.emit(isa.LW(isa.T1, isa.SP, 0))
 		emitter.emit(isa.ADDI(isa.SP, isa.SP, 4))
+		currentDepth--
 	case "*":
 		emitter.emit(isa.MUL(isa.T0, isa.T1, isa.T0))
 		emitter.emit(isa.LW(isa.T1, isa.SP, 0))
 		emitter.emit(isa.ADDI(isa.SP, isa.SP, 4))
+		currentDepth--
 	case "/":
 		emitter.emit(isa.DIV(isa.T0, isa.T1, isa.T0))
 		emitter.emit(isa.LW(isa.T1, isa.SP, 0))
@@ -81,20 +103,24 @@ func translateWord(index int, tokens []token, emitter *Emitter) (int, error) {
 		emitter.emit(isa.MOD(isa.T0, isa.T1, isa.T0))
 		emitter.emit(isa.LW(isa.T1, isa.SP, 0))
 		emitter.emit(isa.ADDI(isa.SP, isa.SP, 4))
+		currentDepth--
 	case "AND":
 		emitter.emit(isa.AND(isa.T0, isa.T1, isa.T0))
 		emitter.emit(isa.LW(isa.T1, isa.SP, 0))
 		emitter.emit(isa.ADDI(isa.SP, isa.SP, 4))
+		currentDepth--
 	case "NOT":
 		emitter.emit(isa.INV(isa.T0, isa.T0))
 	case "DUP":
 		emitter.emit(isa.ADDI(isa.SP, isa.SP, -4))
 		emitter.emit(isa.SW(isa.T1, isa.SP, 0))
 		emitter.emit(isa.MV(isa.T1, isa.T0))
+		currentDepth++
 	case "DROP":
 		emitter.emit(isa.MV(isa.T0, isa.T1))
 		emitter.emit(isa.LW(isa.T1, isa.SP, 0))
 		emitter.emit(isa.ADDI(isa.SP, isa.SP, 4))
+		currentDepth--
 	case "SWAP":
 		emitter.emit(isa.MV(isa.T2, isa.T0))
 		emitter.emit(isa.MV(isa.T0, isa.T1))
@@ -104,6 +130,7 @@ func translateWord(index int, tokens []token, emitter *Emitter) (int, error) {
 		emitter.emit(isa.LW(isa.T0, isa.SP, 0))
 		emitter.emit(isa.LW(isa.T1, isa.SP, 4))
 		emitter.emit(isa.ADDI(isa.SP, isa.SP, 8))
+		currentDepth -= 2
 	case "@":
 		emitter.emit(isa.LW(isa.T0, isa.T0, 0))
 	case "READ":
@@ -112,18 +139,21 @@ func translateWord(index int, tokens []token, emitter *Emitter) (int, error) {
 		emitter.emit(isa.MV(isa.T1, isa.T0))
 		emitter.emitLoadImmNum(isa.T2, inputAddr)
 		emitter.emit(isa.LW(isa.T0, isa.T2, 0))
+		currentDepth++
 	case ".":
 		emitter.emitLoadImmNum(isa.T2, outputNumAddr)
 		emitter.emit(isa.SW(isa.T0, isa.T2, 0))
 		emitter.emit(isa.MV(isa.T0, isa.T1))
 		emitter.emit(isa.LW(isa.T1, isa.SP, 0))
 		emitter.emit(isa.ADDI(isa.SP, isa.SP, 4))
+		currentDepth--
 	case "EMIT":
 		emitter.emitLoadImmNum(isa.T2, outputCharAddr)
 		emitter.emit(isa.SW(isa.T0, isa.T2, 0))
 		emitter.emit(isa.MV(isa.T0, isa.T1))
 		emitter.emit(isa.LW(isa.T1, isa.SP, 0))
 		emitter.emit(isa.ADDI(isa.SP, isa.SP, 4))
+		currentDepth--
 	case "LOOP":
 		loopLabel := fmt.Sprintf("LOOP_%d", emitter.curAddr)
 		loopStack = append(loopStack, loopLabel)
@@ -143,16 +173,17 @@ func translateWord(index int, tokens []token, emitter *Emitter) (int, error) {
 		emitter.emit(isa.JZ(isa.T2, endLoopLabel))
 		emitter.emit(isa.J(beginLoopLabel))
 		emitter.emitLabel(endLoopLabel)
+		currentDepth--
 	case "IF":
 		falseLabel := fmt.Sprintf("IF_FALSE_%d", emitter.curAddr)
-		ifPair := struct {
-			tag   string
-			label string
-		}{
-			tag:   "if",
-			label: falseLabel,
+		currentDepth--
+		ifElem := IfStackElem{
+			tag:         "if",
+			label:       falseLabel,
+			depthBefore: currentDepth,
 		}
-		ifStack = append(ifStack, ifPair)
+		ifStack = append(ifStack, ifElem)
+
 		emitter.emit(isa.MV(isa.T2, isa.T0))
 		emitter.emit(isa.MV(isa.T0, isa.T1))
 		emitter.emit(isa.LW(isa.T1, isa.SP, 0))
@@ -163,25 +194,38 @@ func translateWord(index int, tokens []token, emitter *Emitter) (int, error) {
 			return index, fmt.Errorf("syntax error: if expected")
 		}
 		last := len(ifStack) - 1
-		ifPair := ifStack[last]
+		ifElem := ifStack[last]
 		ifStack = ifStack[:last]
-		if ifPair.tag != "if" {
+
+		if ifElem.tag != "if" {
 			return index, fmt.Errorf("syntax error: if expected")
 		}
+		ifElem.depthAfter = currentDepth
+		currentDepth = ifElem.depthBefore
+
 		endLabel := fmt.Sprintf("IF_END_%d", emitter.curAddr)
 		emitter.emit(isa.J(endLabel))
-		emitter.emitLabel(ifPair.label)
-		ifPair.tag = "else"
-		ifPair.label = endLabel
-		ifStack = append(ifStack, ifPair)
+		emitter.emitLabel(ifElem.label)
+		ifElem.tag = "else"
+		ifElem.label = endLabel
+		ifStack = append(ifStack, ifElem)
 	case "THEN":
 		last := len(ifStack) - 1
-		ifPair := ifStack[last]
+		ifElem := ifStack[last]
 		ifStack = ifStack[:last]
-		if ifPair.tag != "if" && ifPair.tag != "else" {
+
+		if ifElem.tag == "else" {
+			if currentDepth != ifElem.depthAfter && !isCurrentUnsafe {
+				return index, fmt.Errorf("branch stack mismatch: IF ended with %d, ELSE ended with %d", ifElem.depthAfter, currentDepth)
+			}
+		} else if ifElem.tag == "if" {
+			if currentDepth != ifElem.depthBefore && !isCurrentUnsafe {
+				return index, fmt.Errorf("branch stack mismatch: IF block changed stack depth without ELSE")
+			}
+		} else {
 			return index, fmt.Errorf("syntax error: if expected")
 		}
-		emitter.emitLabel(ifPair.label)
+		emitter.emitLabel(ifElem.label)
 	case "=0":
 		trueLabel := fmt.Sprintf("IS_TRUE_%d", emitter.curAddr)
 		falseLabel := fmt.Sprintf("IS_FALSE_%d", emitter.curAddr)
@@ -216,12 +260,49 @@ func translateWord(index int, tokens []token, emitter *Emitter) (int, error) {
 		index++
 		nextToken := tokens[index]
 		tokenName := strings.ToUpper(nextToken.valStr)
+
+		if index+1 < len(tokens) && tokens[index+1].typ == "CONTRACT" {
+			index++
+			contractToken := tokens[index]
+
+			isUnsafe := false
+			for j := index; j < len(tokens); j++ {
+				if tokens[j].typ == "WORD" && tokens[j].valStr == "EXECUTE" {
+					isUnsafe = true
+				}
+				if tokens[j].valStr == ";" {
+					break
+				}
+			}
+
+			funcContracts[tokenName] = Contract{
+				Puts:     contractToken.puts,
+				Takes:    contractToken.takes,
+				IsUnsafe: isUnsafe,
+			}
+
+			savedDepth = currentDepth
+			currentDepth = contractToken.takes
+			expectedPuts = contractToken.puts
+			isCurrentUnsafe = isUnsafe
+			currentProc = tokenName
+		} else {
+			return index, fmt.Errorf("syntax error: contract expected in %s procedure", tokenName)
+		}
+
 		skipLabel := fmt.Sprintf("_SKIP_FUNC_%s", tokenName)
 		emitter.emit(isa.J(skipLabel))
 		emitter.emitLabel(tokenName)
 		word2addr[tokenName] = emitter.curAddr
 		funcSkips = append(funcSkips, skipLabel)
 	case ";":
+		if !isCurrentUnsafe {
+			if currentDepth != expectedPuts {
+				return index, fmt.Errorf("contract mismatch in %s procedure: expected %d elements, got %d", currentProc, expectedPuts, currentDepth)
+			}
+		}
+		currentDepth = savedDepth
+
 		emitter.emitRet()
 		if len(funcSkips) == 0 {
 			return index, fmt.Errorf("syntax error: ':' expected")
@@ -235,6 +316,7 @@ func translateWord(index int, tokens []token, emitter *Emitter) (int, error) {
 		nextToken := tokens[index]
 		tokenName := strings.ToUpper(nextToken.valStr)
 		emitter.emitLit(tokenName)
+		currentDepth++
 	case "CELLS":
 		emitter.emitLoadImmNum(isa.T2, 4)
 		emitter.emit(isa.MUL(isa.T0, isa.T0, isa.T2))
@@ -250,6 +332,7 @@ func translateWord(index int, tokens []token, emitter *Emitter) (int, error) {
 		emitter.emit(isa.SW(isa.T3, isa.RP, 0))
 		emitter.emit(isa.JR(isa.T2))
 		emitter.emitLabel(retLabel)
+		currentDepth--
 	case "VAR":
 		index++
 		nextToken := tokens[index]
@@ -301,10 +384,17 @@ func translateWord(index int, tokens []token, emitter *Emitter) (int, error) {
 			emitter.emitData(isa.Data{Value: char})
 		}
 	default:
-		if _, ok := word2addr[word]; ok {
+		if contract, ok := funcContracts[word]; ok {
+			if currentDepth < contract.Takes {
+				return index, fmt.Errorf("stack underflow calling %s", word)
+			}
+			currentDepth -= contract.Takes
+			currentDepth += contract.Puts
+
 			emitter.emitCall(strings.ToUpper(word))
 		} else if label, ok := var2Label[word]; ok {
 			emitter.emitLit(label)
+			currentDepth++
 		} else {
 			return index, fmt.Errorf("unknown word %s", word)
 		}
@@ -379,6 +469,8 @@ func peephole(tokens []token, index int, emitter *Emitter) (bool, int) {
 			emitter.emit(isa.LUIHi(isa.T0, label))
 			emitter.emit(isa.ADDILo(isa.T0, isa.T0, label))
 			emitter.emit(isa.LW(isa.T0, isa.T0, 0))
+
+			currentDepth++
 			newIndex := index + 2
 			return true, newIndex
 		}
@@ -396,6 +488,7 @@ func peephole(tokens []token, index int, emitter *Emitter) (bool, int) {
 			emitter.emit(isa.LW(isa.T1, isa.SP, 0))
 			emitter.emit(isa.ADDI(isa.SP, isa.SP, 4))
 
+			currentDepth--
 			newIndex := index + 2
 			return true, newIndex
 		}

@@ -11,6 +11,8 @@ type token struct {
 	typ    string
 	valNum int32
 	valStr string
+	takes  int32
+	puts   int32
 }
 
 func tokenize(code string) ([]token, error) {
@@ -22,6 +24,7 @@ func tokenize(code string) ([]token, error) {
 	}{
 		{"IMPORT", `import\s+(\w+)`},
 		{"STRING", `"[^"]*"`},
+		{"CONTRACT", `\(\s*\d+\s*->\s*\d+\s*\)`},
 		{"NUMBER", `-?\d+`},
 		{"WORD", `[^\s]+`},
 	}
@@ -35,6 +38,8 @@ func tokenize(code string) ([]token, error) {
 
 	matches := re.FindAllStringSubmatch(code, -1)
 	groupNames := re.SubexpNames()
+
+	extractDigits := regexp.MustCompile(`\d+`)
 
 	for _, match := range matches {
 		var typ, val string
@@ -65,6 +70,17 @@ func tokenize(code string) ([]token, error) {
 			if len(parts) > 1 {
 				libName := strings.ToLower(parts[1])
 				tokens = append(tokens, token{typ: typ, valStr: libName})
+			}
+		case "CONTRACT":
+			nums := extractDigits.FindAllString(val, 2)
+			if len(nums) == 2 {
+				takes, _ := strconv.ParseInt(nums[0], 10, 32)
+				puts, _ := strconv.ParseInt(nums[1], 10, 32)
+				tokens = append(tokens, token{
+					typ:   typ,
+					takes: int32(takes),
+					puts:  int32(puts),
+				})
 			}
 		}
 	}

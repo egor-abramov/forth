@@ -10,6 +10,10 @@ import (
 func main() {
 	var scalarMode bool
 	flag.BoolVar(&scalarMode, "scalar", false, "")
+
+	var trace bool
+	flag.BoolVar(&trace, "trace", false, "")
+
 	flag.Parse()
 
 	args := flag.Args()
@@ -20,5 +24,5 @@ func main() {
 	}
 	sourcePath := args[0]
 	inputPath := args[1]
-	machine.Simulate(sourcePath, inputPath, scalarMode)
+	machine.Simulate(sourcePath, inputPath, trace, scalarMode)
 }

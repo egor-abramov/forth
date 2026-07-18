@@ -1,14 +1,16 @@
-: cr 10 emit ;
+: cr (0 -> 0)
+    10 emit
+;
 
 var _str_ptr
 var _str_len
 
-: _print_char
+: _print_char (0 -> 0)
     _str_ptr @ 4 + _str_ptr !
     _str_ptr @ @ emit
 ;
 
-: _print_loop
+: _print_loop (0 -> 0)
     loop
         _print_char
         _str_len @ 1 - _str_len !
@@ -16,7 +18,7 @@ var _str_len
     endloop
 ;
 
-: print_str
+: print_str (1 -> 0)
     _str_ptr !
     _str_ptr @ @ _str_len !
 
@@ -28,13 +30,13 @@ var _str_len
 var _start_ptr
 var _char
 
-: _process_char
+: _process_char (0 -> 0)
     _char @
     _str_ptr @ dup 4 + _str_ptr ! !
     _str_len @ 1 + _str_len !
 ;
 
-: read_str
+: read_str (1 -> 0)
     dup _start_ptr !
     4 + _str_ptr !
     0 _str_len !
@@ -60,7 +62,7 @@ var _chars_read
 var _arr_ptr
 var _arr_len
 
-: read_num
+: read_num (0 -> 1)
     0 _acc !
     0 _sign !
     0 _chars_read !
@@ -92,7 +94,7 @@ var _arr_len
     _acc @
 ;
 
-: read_array
+: read_array (1 -> 1)
     _arr_ptr !
     0 _arr_len !
 
@@ -116,7 +118,7 @@ var _print_ptr
 var _print_len
 var _print_i
 
-: _print_array_loop
+: _print_array_loop (0 -> 0)
     loop
         _print_ptr @ _print_i @ cells + @ .
         _print_i @ 1 + _print_i !
@@ -124,7 +126,7 @@ var _print_i
     endloop
 ;
 
-: print_array
+: print_array (2 -> 0)
     _print_len !
     _print_ptr !
     0 _print_i !

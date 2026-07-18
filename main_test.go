@@ -74,7 +74,7 @@ func TestTranslatorAndMachine(t *testing.T) {
 			})
 
 			translator.Translate(source, target)
-			machine.Simulate(target, inp, false)
+			machine.Simulate(target, inp, true, false)
 
 			codeLogData, err := os.ReadFile(target + ".hex")
 			if err != nil {

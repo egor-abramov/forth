@@ -12,7 +12,7 @@ var b31
 var r31
 var carry_flag
 
-: add64
+: add64 (0 -> 0)
     AL @ BL @ + RL !
 
     AL @ 2147483647 not and a31 !
@@ -32,7 +32,7 @@ var carry_flag
     AH @ BH @ + carry_flag @ + RH !
 ;
 
-: sub64
+: sub64 (0 -> 0)
     BL @ not BL !
     BH @ not BH !
 
@@ -53,7 +53,7 @@ string "64-bit Subtraction with borrow\n" msg_sub_b
 string "High: " msg_h
 string " Low: " msg_l
 
-: print_res
+: print_res (0 -> 0)
     msg_h print_str
     RH @ .
     msg_l print_str

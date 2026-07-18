@@ -2,17 +2,17 @@ import io
 
 var callback
 
-: apply_twice
+: apply_twice (2 -> 1)
     callback !
     callback @ execute
     callback @ execute
 ;
 
-: double
+: double (1 -> 1)
     2 *
 ;
 
-: square
+: square (1 -> 1)
     dup *
 ;
 

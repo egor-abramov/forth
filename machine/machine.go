@@ -34,7 +34,7 @@ func initMachine(sourcePath, inputPath string) ([]int32, []int32, error) {
 	return initialMem, inputTokens, nil
 }
 
-func Simulate(sourcePath, inputPath string, scalarMode bool) {
+func Simulate(sourcePath, inputPath string, trace bool, scalarMode bool) {
 	initialMemory, inputTokens, err := initMachine(sourcePath, inputPath)
 	if err != nil {
 		log.Fatal(err)
@@ -65,7 +65,7 @@ func Simulate(sourcePath, inputPath string, scalarMode bool) {
 			break
 		}
 
-		if len(traceLog) < 1000 {
+		if trace && len(traceLog) < 1000 {
 			pcStr := fmt.Sprintf("PC: 0x%04X", dp.pc)
 			mpcStr := fmt.Sprintf("m1: %d m2: %d", cu.mpc1, cu.mpc2)
 
@@ -101,8 +101,10 @@ func Simulate(sourcePath, inputPath string, scalarMode bool) {
 	log.Println("Output:")
 	output := strings.Join(mem.outputBuffer, "") + "\n"
 	log.Println(output)
-	log.Println("Trace:")
-	for _, traceLine := range traceLog {
-		log.Println(traceLine)
+	if trace {
+		log.Println("Trace:")
+		for _, traceLine := range traceLog {
+			log.Println(traceLine)
+		}
 	}
 }

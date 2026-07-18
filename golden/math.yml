@@ -1,7 +1,9 @@
 in_source: |-
     import io
 
-    : SQUARE DUP * ;
+    : SQUARE (1 -> 1)
+        DUP *
+    ;
     5 square . cr
 
     2 ' square execute .

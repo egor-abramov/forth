@@ -9,14 +9,14 @@ in_source: |-
 
     128 array d
 
-    : swap_elements
+    : swap_elements (0 -> 0)
         d j @ cells + @ s1 !
         d j @ 1 + cells + @ s2 !
         s2 @ d j @ cells + !
         s1 @ d j @ 1 + cells + !
     ;
 
-    : inner_sort_loop
+    : inner_sort_loop (0 -> 0)
         0 j !
         loop
             d j @ cells + @
@@ -30,7 +30,7 @@ in_source: |-
         endloop
     ;
 
-    : bubble_sort
+    : bubble_sort (0 -> 0)
         0 i !
         loop
             len @ i @ - 1 - >0 if

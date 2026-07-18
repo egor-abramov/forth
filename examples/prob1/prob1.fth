@@ -7,7 +7,7 @@ var prod
 var max_pal
 var cont_b
 
-: is_palindrome
+: is_palindrome (0 -> 1)
     prod @ temp !
     0 reversed !
 
@@ -21,7 +21,7 @@ var cont_b
     prod @ reversed @ - =0
 ;
 
-: eval_pair
+: eval_pair (0 -> 0)
     a @ b @ * prod !
 
     prod @ max_pal @ - >0 if
@@ -34,7 +34,7 @@ var cont_b
     then
 ;
 
-: loop_b
+: loop_b (0 -> 0)
     a @ b !
     loop
         eval_pair
@@ -45,7 +45,7 @@ var cont_b
     endloop
 ;
 
-: loop_a
+: loop_a (0 -> 0)
     999 a !
     loop
         loop_b
