@@ -1,5 +1,3 @@
-import io
-
 loop
     read
     dup 10 - =0
