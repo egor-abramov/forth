@@ -15,16 +15,16 @@
 <instruction> ::= <math_op>
 			| <logic_op>
  			| <stack_op>
-                | <addr_op>
+			| <addr_op>
 			| <io_op>
-                | <loop_exp>
-                | <cond_exp>
-                | <number>
-                | <string_literal>
-                | <identifier>
-                | <execution_token>
-                | <execute_op>
-                | <flag_op>
+            | <loop_exp>
+			| <cond_exp>
+			| <number>
+			| <string_literal>
+			| <identifier>
+			| <execution_token>
+			| <execute_op>
+			| <flag_op>
 
 <instruction_list> ::= <instruction> | <instruction> <instruction_list>
 
