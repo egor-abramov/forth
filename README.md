@@ -13,10 +13,10 @@
 <term> ::= <procedure_def> | <var_def> | <import_exp> | <instruction>
 
 <instruction> ::= <math_op>
-	            | <logic_op>
-	            | <stack_op>
+			| <logic_op>
+ 			| <stack_op>
                 | <addr_op>
-	            | <io_op>
+			| <io_op>
                 | <loop_exp>
                 | <cond_exp>
                 | <number>
